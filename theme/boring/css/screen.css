@@ -32,6 +32,11 @@ h4 {
     font-size: 1.1em;
 }
 
+a {
+    color: RGB(53, 164, 225);
+    text-decoration: none;
+}
+
 li {
     list-style-type: square;
 }
