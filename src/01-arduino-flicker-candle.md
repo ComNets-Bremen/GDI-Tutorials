@@ -15,6 +15,8 @@ Arduino flicker Candle
 A LED controlled by an Arduino
 to flicker like a candle.
 
+And can be turned on an off by a button.
+
 ---
 
 Connecting an LED
@@ -35,7 +37,7 @@ Controlling the LED (hardware)
 ==============================
 
 Remove the connection to the Arduino 5V pin and attach
-it to the Arduino pin D11 instead.
+it to the Arduino pin 11 instead.
 
 ---
 
@@ -132,6 +134,111 @@ different led brightnesses.
 
 ---
 
+Connecting a button
+===================
+
+- Connect one pin of a button to a GND pin of the Arduino
+- Connect the other pin on the same side of the button to Arduino pin 10
+
+---
+
+Using the button
+================
+
+    !C
+    void setup() {
+      pinMode(11, OUTPUT);
+      pinMode(10, INPUT_PULLUP);
+    }
+
+    void loop() {
+      if (digitalRead(10)) {
+        analogWrite(11, 255);
+      }
+      else {
+        analogWrite(11, 5);
+      }
+      delay(100);
+    }
+
+---
+
+Not !
+=====
+
+The LED gets dimmer when the button is pressed!
+It was supposed to be the other way around!
+
+Executing `pinMode(10, INPUT_PULLUP)` connects an internal
+resistor to pin 10 pulling the voltage up <br/>
+(`digitalRead(10) == 1`).
+
+When the button is pressed the button shorts pin 10
+to 0V (GND) <br/>
+(`digitalRead(10) == 0`).
+
+To invert the return value of `digitalRead` use <br/>
+`if (!digitalRead(10)) {`.
+
+---
+
+Using the button (correctly)
+============================
+
+    !C
+    void setup() {
+      pinMode(11, OUTPUT);
+      pinMode(10, INPUT_PULLUP);
+    }
+
+    void loop() {
+      if (!digitalRead(10)) {
+        analogWrite(11, 255);
+      }
+      else {
+        analogWrite(11, 5);
+      }
+      delay(100);
+    }
+
+---
+
+Toggling between states
+=======================
+
+    !C
+    boolean is_on= true;
+    void loop() {
+      if (!digitalRead(10)) {
+        is_on= !is_on;
+      }
+      if (is_on) {
+        analogWrite(11, 255);
+      }
+      else {
+        analogWrite(11, 5);
+      }
+    }
+
+[…][code_toggle1]
+
+---
+
+Toggling more slowly
+====================
+
+The LEDs toggle between on and off
+while the button is pressed.
+
+We only want it to toggle once each time the
+button is pressed.
+
+⇒ We need to track the last button state.
+
+[…][code_toggle2]
+
+---
+
 Randomness
 ==========
 
@@ -167,9 +274,25 @@ Combining the functions
 =======================
 
 You can now try to combine the
-`analogWrite`, `random` and `delay`
+`analogWrite`, `analogRead`, `random` and `delay`
 functions to create a nice looking
 Candle animation.
+
+---
+
+Working example
+===============
+
+    !C
+    if (is_on) {
+      analogWrite(11, random(10, 255));
+      delay(random(0, 100));
+    }
+    else {
+      analogWrite(11, 0);
+    }
+
+[…][code_candle]
 
 ---
 
@@ -223,3 +346,6 @@ is started.
 [wiki_pwm]: https://de.wikipedia.org/wiki/Pulsweitenmodulation#Aus_digitalen_Signalen "Wikipedia Pulsweitenmodulation"
 [arduino_analogwrite]: https://www.arduino.cc/en/Reference/AnalogWrite
 [arduino_random]: https://www.arduino.cc/en/Reference/Random
+[code_toggle1]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkpIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGlmIChpc19vbikgewogICAgYW5hbG9nV3JpdGUoMTEsIDI1NSk7CiAgfQogIGVsc2UgewogICAgYW5hbG9nV3JpdGUoMTEsIDUpOwogIH0KfQ==
+[code_toggle2]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKYm9vbGVhbiBsYXN0X2J0bj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkgJiYgbGFzdF9idG4pIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGxhc3RfYnRuPSBkaWdpdGFsUmVhZCgxMCk7CiAgCiAgaWYgKGlzX29uKSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgMjU1KTsKICB9CiAgZWxzZSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgNSk7CiAgfQogIAogIGRlbGF5KDIwKTsKfQ==
+[code_candle]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKYm9vbGVhbiBsYXN0X2J0bj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkgJiYgbGFzdF9idG4pIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGxhc3RfYnRuPSBkaWdpdGFsUmVhZCgxMCk7CiAgCiAgaWYgKGlzX29uKSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgcmFuZG9tKDEwLCAyNTUpKTsKICAgIGRlbGF5KHJhbmRvbSgwLCAxMDApKTsKICB9CiAgZWxzZSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgMCk7CiAgfQogIAogIGRlbGF5KDIwKTsKfQ==
