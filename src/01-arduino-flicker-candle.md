@@ -12,10 +12,8 @@
 Arduino flicker Candle
 ======================
 
-A LED controlled by an Arduino
-to flicker like a candle.
-
-And can be turned on an off by a button.
+An Arduino controlled LED that can be turned
+on and off an flickers like a candle.
 
 ---
 
@@ -23,6 +21,10 @@ Internal connections on a breadboard
 ====================================
 
 ![Breadboard](schematic/01_breadboard_simple.svg)
+
+- Long horizontal power supply connections. Split into
+  left an right half.
+- Shorter vertical groups of five pins.
 
 ---
 
@@ -146,8 +148,8 @@ Connecting a button
 
 ![Connecting the LED](schematic/01_connect_led_button.svg)
 
-- Connect one pin of a button to a GND pin of the Arduino
-- Connect the other pin on the same side of the button to Arduino pin 10
+- Connect one pin of a button to one Arduino GND pin.
+- Connect the other pin on the same side of the button to Arduino pin 10.
 
 ---
 
