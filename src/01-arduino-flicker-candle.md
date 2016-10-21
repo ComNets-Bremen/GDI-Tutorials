@@ -19,14 +19,19 @@ And can be turned on an off by a button.
 
 ---
 
+Internal connections on a breadboard
+====================================
+
+![Breadboard](schematic/01_breadboard_simple.svg)
+
+---
+
 Connecting an LED
 =================
 
 Put together the following circuit on your breadboards:
 
-- Connect the Arduino 5V pin to one lead of a 1kΩ resistor.
-- Connect the other lead of the resistor to one lead of the LED.
-- Connect the other lead of the LED to the Arduino GND pin.
+![Connecting the LED](schematic/01_connect_led_5V.svg)
 
 If the LED does not light you should try swapping its leads
 around.
@@ -35,6 +40,8 @@ around.
 
 Controlling the LED (hardware)
 ==============================
+
+![Connecting the LED](schematic/01_connect_led.svg)
 
 Remove the connection to the Arduino 5V pin and attach
 it to the Arduino pin 11 instead.
@@ -136,6 +143,8 @@ different led brightnesses.
 
 Connecting a button
 ===================
+
+![Connecting the LED](schematic/01_connect_led_button.svg)
 
 - Connect one pin of a button to a GND pin of the Arduino
 - Connect the other pin on the same side of the button to Arduino pin 10
