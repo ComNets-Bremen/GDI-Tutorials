@@ -9,4 +9,3 @@ all: $(HTML_FILES)
 
 %.html: ../src/%.md
 	$(SLIDE_COMPILER) -c -d $(@) -r -t $(THEME_DIR) $(<)
-

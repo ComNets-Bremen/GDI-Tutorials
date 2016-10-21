@@ -1,3 +1,6 @@
 *~
+target/sync.sh
 target/theme
 target/*.html
+schematics/*.svg
+schematics/*/*.svg
