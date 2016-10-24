@@ -13,7 +13,7 @@ Arduino flicker Candle
 ======================
 
 An Arduino controlled LED that can be turned
-on and off an flickers like a candle.
+on and off and flickers like a candle.
 
 ---
 
