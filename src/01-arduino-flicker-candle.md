@@ -17,6 +17,20 @@ on and off and flickers like a candle.
 
 ---
 
+Getting the Arduino IDE
+=======================
+
+Please download the Arduino software
+from their website https://www.arduino.cc/
+
+(You have to click "Just download")
+
+- Windows: [installer][redmond_inst] or [.zip][redmond_zip]
+- Mac: [.zip][cupertino_zip]
+- Linux: {apt, yum, pacman} install arduino
+
+---
+
 Internal connections on a breadboard
 ====================================
 
@@ -163,7 +177,7 @@ Using the button
     }
 
     void loop() {
-      if (digitalRead(10)) {
+      if (digitalRead(10) == true) {
         analogWrite(11, 255);
       }
       else {
@@ -297,10 +311,11 @@ Working example
     !C
     if (is_on) {
       analogWrite(11, random(10, 255));
-      delay(random(0, 100));
+      delay(random(20, 120));
     }
     else {
       analogWrite(11, 0);
+      delay(100);
     }
 
 […][code_candle]
@@ -354,9 +369,12 @@ to the Arduino.
 Once the upload is successfull the uploaded program
 is started.
 
+[redmond_inst]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-windows.exe
+[redmond_zip]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-windows.zip
+[cupertino_zip]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-macosx.zip
 [wiki_pwm]: https://de.wikipedia.org/wiki/Pulsweitenmodulation#Aus_digitalen_Signalen "Wikipedia Pulsweitenmodulation"
 [arduino_analogwrite]: https://www.arduino.cc/en/Reference/AnalogWrite
 [arduino_random]: https://www.arduino.cc/en/Reference/Random
 [code_toggle1]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkpIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGlmIChpc19vbikgewogICAgYW5hbG9nV3JpdGUoMTEsIDI1NSk7CiAgfQogIGVsc2UgewogICAgYW5hbG9nV3JpdGUoMTEsIDUpOwogIH0KfQ==
 [code_toggle2]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKYm9vbGVhbiBsYXN0X2J0bj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkgJiYgbGFzdF9idG4pIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGxhc3RfYnRuPSBkaWdpdGFsUmVhZCgxMCk7CiAgCiAgaWYgKGlzX29uKSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgMjU1KTsKICB9CiAgZWxzZSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgNSk7CiAgfQogIAogIGRlbGF5KDIwKTsKfQ==
-[code_candle]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKYm9vbGVhbiBsYXN0X2J0bj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkgJiYgbGFzdF9idG4pIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGxhc3RfYnRuPSBkaWdpdGFsUmVhZCgxMCk7CiAgCiAgaWYgKGlzX29uKSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgcmFuZG9tKDEwLCAyNTUpKTsKICAgIGRlbGF5KHJhbmRvbSgwLCAxMDApKTsKICB9CiAgZWxzZSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgMCk7CiAgfQogIAogIGRlbGF5KDIwKTsKfQ==
+[code_candle]: data:text/plain;base64,Ym9vbGVhbiBpc19vbj0gdHJ1ZTsKYm9vbGVhbiBsYXN0X2J0bj0gdHJ1ZTsKCnZvaWQgc2V0dXAoKSB7CiAgcGluTW9kZSgxMSwgT1VUUFVUKTsKICBwaW5Nb2RlKDEwLCBJTlBVVF9QVUxMVVApOwp9Cgp2b2lkIGxvb3AoKSB7CiAgaWYgKCFkaWdpdGFsUmVhZCgxMCkgJiYgbGFzdF9idG4pIHsKICAgIGlzX29uPSAhaXNfb247CiAgfQogIAogIGxhc3RfYnRuPSBkaWdpdGFsUmVhZCgxMCk7CiAgCiAgaWYgKGlzX29uKSB7CiAgICBhbmFsb2dXcml0ZSgxMSwgcmFuZG9tKDEwLCAyNTUpKTsKICAgIGRlbGF5KHJhbmRvbSgyMCwgMTIwKSk7CiAgfQogIGVsc2UgewogICAgYW5hbG9nV3JpdGUoMTEsIDApOwogICAgZGVsYXkoMTAwKTsKICB9Cn0K
