@@ -2,4 +2,5 @@
 target/sync.sh
 target/theme
 target/*.html
+target/*.pdf
 schematics/*/*.svg
