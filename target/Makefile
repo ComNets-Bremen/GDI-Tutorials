@@ -15,4 +15,4 @@ all: $(HTML_FILES) $(PDF_FILES)
 	rm $*.md
 
 %.pdf: %.html
-	$(PDF_COMPILER) $(<) $(@)
+	$(PDF_COMPILER) --keep-relative-links $(<) $(@)

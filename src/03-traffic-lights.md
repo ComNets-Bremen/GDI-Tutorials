@@ -199,7 +199,7 @@ Analog read
 What does the example teach us?
 -------------------------------
 
-- Analog pin names are special: use A0 - A5 instead of e.g. 13
+- Analog pin names are special: use `A0` - `A5` instead of e.g. `13`
 - `analogRead` returns values between 0 and 1023
 
 ---
@@ -269,7 +269,7 @@ Serial.print{,ln}
 =================
 
 To send text to the computer
-you ca use the `Serial.print` and
+you can use the `Serial.print` and
 `Serial.println` functions.
 
 - `Serial.print()` - Send text or a value
