@@ -25,13 +25,15 @@ We will be using the PWM enabled(~) Arduino pins
 
 ![LED Setup](schematic/03_three_leds.svg)
 
+Use 1kΩ resistors to limit the LED currents.
+
 ---
 
 Initializing the LEDs (naively)
 ===============================
 
 How we would have initialized the
-LED in the previous tutorial.
+LED in the previous tutorial:
 
     !C
     void setup() {
@@ -60,6 +62,8 @@ Initializing the LEDs (cleverly)
 Replace `/* TODO */` with a line
 of code so that all leds will be set as output.
 
+Also turn on all LEDs to see if you were sucessful.
+
 Use the `leds` array!
 
 ---
@@ -73,6 +77,7 @@ Initializing the LEDs (cleverly)
     void setup() {
       for (int i=0; i<3; i++) {
         pinMode(leds[i], OUTPUT);
+        digitalWrite(leds[i], HIGH);
       }
     }
 
@@ -250,7 +255,7 @@ Using serial communication
 ==========================
 
 To use serial communication in your
-program the Serial library has to be set up.
+program, the Serial library has to be set up.
 
     !C
     void setup() {
