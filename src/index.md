@@ -7,6 +7,8 @@ Semester 1
 
 [Slide sources][sources]
 
+<div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
+
 [t1_html]: 01-arduino-flicker-candle.html
 [t1_pdf]: 01-arduino-flicker-candle.pdf
 
