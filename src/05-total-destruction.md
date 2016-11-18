@@ -20,7 +20,7 @@ detonator circuit countdown timer.
 The concept
 ===========
 
-Connect a seven segment display to
+Connect a seven-segment display to
 your Arduino.
 
 Use binary operations to
@@ -86,7 +86,7 @@ Displaying Symbols
 
 Edit the constant `binary_number` in the previous program
 so that the number `1` is displayed on the
-seven segment display.
+seven-segment display.
 
 ---
 
