@@ -175,8 +175,153 @@ Wirecutter 1337
 Try beating the program above
 _without dying_.
 
+---
+
+Appendix
+========
+
+The following slides are annotations that
+are intended to help you write better C code.
+
+They are not part of the tutorial or
+the lecture.
+You are not required to read or understand them.
+
+Please direct any questions regarding them directly
+to the autor of the slides.
+
+---
+
+Appendix the `var␣=` pattern
+============================
+
+In the lecture you have learned, that
+the statement `i=i+1`
+can also be written as `i++`.
+
+You have also learned, that the
+statement `i=i+2` can be also written as
+`i+=2`.
+
+The second case is actually only
+a special case of a more generic pattern
+as all operations that take two arguments
+(+,-,/,*,%,&,|,^,<<,>>) can be written in the shorter
+`var␣=` format.
+
+    a&= 1;  ⇔ a= a & 1;  // Binary and (clear all but the first bit)
+    a^= 1;  ⇔ a= a ^ 1;  // Binary xor (toggle the first bit)
+    a|= ~1; ⇔ a= a | ~1; // Binary or  (clear the first bit)
+    a<<= 1; ⇔ a= a << 1; // Shift left (multiply by two)
+
+---
+
+Appendix stdint
+===============
+
+Observation: the C integer types do not have
+the same length on different architectures.
+
+    !C
+    // Wait one second.
+    for (int i=0; i<60000; i++) {
+      delay(1);
+    }
+
+On a modern computer, where an `int` is
+32 or more bits long, the code above would wait for
+one second.
+
+On an Arduino it would loop forever
+as `i` is only 16 bit wide and can never be
+greater than 32767.
+
+This is _inconsistent_.
+
+---
+
+Appendix stdint
+===============
+
+To avoid these inconsitencies you [should][stdint_when],
+in [most cases][stdint_exceptions] use
+the integer types defined in `stdint.h`.
+
+In the Arduino environment this file is included by
+default.
+When writing C in different environments
+you can include it using `#include <stdint.h>`.
+
+---
+
+Appendix stdint
+===============
+
+`stdint.h` defines, among others, the following types:
+
+    int8_t  - a signed integer that is guaranteed to be 8 bits wide
+    uint8_t - a unsigned integer that is guaranteed to be 8 bits wide
+
+    int16_t, uint16_t - integers that are guaranteed to be 16 bits wide
+    int32_t, uint32_t - integers that are guaranteed to be 32 bits wide
+    int64_t, uint64_t - integers that are guaranteed to be 64 bits wide
+
+These types should be used when your code
+depends on the size of a type.
+
+The following statement is _true_ on all platforms:
+
+    uint8_t i= 0x80;
+    if ((i<<1) == 0) {
+
+---
+
+Appendix stdint
+===============
+
+When you are only interested in the minimum
+size a type has you can use the following types:
+
+    int_fast8_t, int_fast16_t, int_fast32_t, int_fast64_t     - signed
+    uint_fast8_t, uint_fast16_t, uint_fast32_t, uint_fast64_t - unsigned
+
+These types are guaranteed to be at least the specified number
+of bits wide but may be wider.
+
+The following statement _could_ be _false_ on some platforms:
+
+    uint_fast8_t i= 0x80;
+    if ((i<<1) == 0) {
+
+---
+
+Appendix size_t
+===============
+
+When dealing with memory and pointers
+(not yet discussed in the lecture) you
+often have to pass around the size of an object
+or a the number of objects in an array.
+
+In these cases you should use the `size_t`
+type as it is guaranteed to be able to
+hold the size of any object
+that fits into the memory.
+
+    !C
+    void bad_example(struct example *elem, int num_elem)
+
+    void good_example(struct example *elem, size_t num_elem)
+
+When you are doing calculations on sizes (dangerous)
+and the result may be negative (very dangerous)
+you should use the signed `ssize_t` type.
+
 [code_slice_bits]: examples/05_slice_bits.ino
 [code_seg_table]: examples/05_seg_table.ino
 [code_u_dead]: examples/05_u_dead.ino
 [code_u_dead_simple]: examples/05_u_dead_simple.ino
 [code_u_dead_pro]: examples/05_u_dead_pro.ino
+
+[stdint_when]: https://matt.sh/howto-c#_types
+[stdint_exceptions]: https://matt.sh/howto-c#_to-int-or-not-to-int
