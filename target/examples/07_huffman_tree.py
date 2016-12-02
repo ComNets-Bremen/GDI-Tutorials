@@ -53,9 +53,35 @@ class HuffmanTreeBranch(HuffmanTreeNode):
 
         return (side_a + side_b)
 
+    def format_subtree(self):
+        sub_a= self.child_a.format_subtree()
+        sub_b= self.child_b.format_subtree()
+
+        fmt= list()
+        fmt_char= ' '
+
+        for e in sub_a:
+            if e.startswith('─'):
+                fmt_char= '│'
+                fmt.append(' ╭' + e)
+
+            else:
+                fmt.append(' ' + fmt_char + e)
+
+        fmt.append('─┤')
+
+        for e in sub_b:
+            if e.startswith('─'):
+                fmt_char= ' '
+                fmt.append(' ╰' + e)
+
+            else:
+                fmt.append(' ' + fmt_char + e)
+
+        return(fmt)
+
     def get_propability(self):
         return(self.child_a.get_propability() + self.child_b.get_propability())
-
 
 class HuffmanTreeLeaf(HuffmanTreeNode):
     def __init__(self, letter, propability):
@@ -68,8 +94,8 @@ class HuffmanTreeLeaf(HuffmanTreeNode):
     def get_propability(self):
         return(self.propability)
 
-    def __repr__(self):
-        return('({} {}%)'.format(self.letter, self.propability))
+    def format_subtree(self):
+        return(['─╼ {} ({}%)'.format(repr(self.letter), self.propability)])
 
 class EncodingTableBase(object):
     def encode_str(self, text):
@@ -86,6 +112,8 @@ class HuffmanTable(EncodingTableBase):
             tree.append(new_branch)
 
         root= tree[0]
+
+        print('\n'.join(root.format_subtree()))
 
         self.table= dict(root.get_encodings())
 
