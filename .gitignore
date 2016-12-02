@@ -4,3 +4,4 @@ target/theme
 target/*.html
 target/*.pdf
 schematics/*/*.svg
+\#*
