@@ -11,14 +11,14 @@ Backstory
 
 You are the new intern at a company
 that collects sensor data from
-different places.
+remote places
 
 Your company pays a lot of money per byte to
 transfer the sensor data into your
-datacenter.
+datacenter
 
 To impress your new boss you want to reduce
-the amount of data that has to be transfered.
+the amount of data that has to be transfered
 
 ---
 
@@ -27,16 +27,16 @@ Huffman coding
 
 Huffman coding is a method that
 uses a known probability distribution of symbols
-to encode messages with as few bits as possible.
+to encode messages with as few bits as possible
 
-To generate the symbols of a huffman code
-a binary tree structure is used.
+To generate the encodings of a huffman code
+a binary tree structure is used
 
 A Binary tree is a tree where each node
-has exactly two children.
+has exactly two children
 
 On the next slide you will see the general
-algorithm to generate an huffman tree.
+algorithm to generate an huffman tree
 
 ---
 
@@ -241,7 +241,7 @@ the following probability distribution:
         2 │  13%
 
 Construct a huffman tree from the table
-above.
+above (on a piece of paper).
 
 ---
 
@@ -300,8 +300,8 @@ a `struct` like the following can be used
       struct hm_node_t *child_1;
     };
 
-Each node can either have two children
-or a value
+Each node can either have two children (branch node)
+or a value (leaf node)
 
 ---
 
