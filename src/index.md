@@ -7,6 +7,8 @@ Semester 1
 
 05 - [Total destruction][t5_html] ([.pdf][t5_pdf])
 
+07 - [Data vs. Drosselkom][t7_html] ([.pdf][t7_pdf])
+
 [Slide sources][sources]
 
 <div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
@@ -19,5 +21,8 @@ Semester 1
 
 [t5_html]: 05-total-destruction.html
 [t5_pdf]: 05-total-destruction.pdf
+
+[t7_html]: 07-data-vs-drosselkom.html
+[t7_pdf]: 07-data-vs-drosselkom.pdf
 
 [sources]: https://github.com/hnez/GDITutorials
