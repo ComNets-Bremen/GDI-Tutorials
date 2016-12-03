@@ -3,38 +3,12 @@
 import sys
 import string
 
-# Source:
-#  https://de.wikipedia.org/wiki/Buchstabenh%C3%A4ufigkeit
-# There was no information about the space sign so i guessed
-letter_prop_map_de_de= {
-    ' ' : 10.0,
-    'E' : 17.40,
-    'N' : 9.78,
-    'I' : 7.55,
-    'S' : 7.27,
-    'R' : 7.00,
-    'A' : 6.51,
-    'T' : 6.15,
-    'D' : 5.08,
-    'H' : 4.76,
-    'U' : 4.35,
-    'L' : 3.44,
-    'C' : 3.06,
-    'G' : 3.01,
-    'M' : 2.53,
-    'O' : 2.51,
-    'B' : 1.89,
-    'W' : 1.89,
-    'F' : 1.66,
-    'K' : 1.21,
-    'Z' : 1.13,
-    'P' : 0.79,
-    'V' : 0.67,
-    'ß' : 0.31,
-    'J' : 0.27,
-    'Y' : 0.04,
-    'X' : 0.03,
-    'Q' : 0.02
+differences= {
+    -2 : 9,
+    -1 : 19,
+    0 : 40,
+    1 : 18,
+    2 : 13
 }
 
 class HuffmanTreeNode(object):
@@ -62,7 +36,7 @@ class HuffmanTreeBranch(HuffmanTreeNode):
 
         middle_text= '─({:2.2f}%)─┤'.format(self.get_propability())
         pad= ' '*(len(middle_text) - 1)
-        
+
         for e in sub_a:
             if e.startswith('─'):
                 fmt_char= '│'
@@ -100,24 +74,20 @@ class HuffmanTreeLeaf(HuffmanTreeNode):
     def format_subtree(self):
         return(['─({}%)─╼ {}'.format(self.propability, repr(self.letter))])
 
-class EncodingTableBase(object):
-    def encode_str(self, text):
-        return(' '.join(self.table[l] for l in text.upper()))
-
-class HuffmanTable(EncodingTableBase):
-    def __init__(self, letters):       
+class HuffmanTable(object):
+    def __init__(self, letters):
         tree= sorted(list(HuffmanTreeLeaf(letter, prop) for (letter, prop) in letters.items()))
 
         def print_tree():
             headline='Noch {} Schritte:'.format(len(tree) - 1)
             print('\n'.join(('','', headline, '-'*len(headline), '')))
-            
-            for n in tree:
-                print('\n'.join(n.format_subtree()))            
 
-            
+            for n in tree:
+                print('\n'.join(n.format_subtree()))
+
+
         print_tree()
-            
+
         while(len(tree) != 1):
             new_branch= HuffmanTreeBranch(tree.pop(), tree.pop())
             tree.append(new_branch)
@@ -130,23 +100,8 @@ class HuffmanTable(EncodingTableBase):
 
         self.table= dict(root.get_encodings())
 
-class AsciiTable(EncodingTableBase):
-    def __init__(self):
-        self.table= dict(
-            (l, '{:08b}'.format(n + 65)) for (n, l) in enumerate(letter_prop_map_de_de)
-        )
-
-        self.table[' ']= '00100000'
-
 def main(argv):
-    ht= HuffmanTable(letter_prop_map_de_de)
-    at= AsciiTable()
-
-    txt_in= ' '.join(argv)
-    
-    print('Input Text:', txt_in)
-    print('Huffman:   ', ht.encode_str(txt_in))
-    print('ASCII:     ', at.encode_str(txt_in))
+    ht= HuffmanTable(differences)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
