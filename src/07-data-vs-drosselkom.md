@@ -36,7 +36,7 @@ A Binary tree is a tree where each node
 has exactly two children
 
 On the next slide you will see the general
-algorithm to generate an huffman tree
+algorithm to generate a huffman tree
 
 ---
 
