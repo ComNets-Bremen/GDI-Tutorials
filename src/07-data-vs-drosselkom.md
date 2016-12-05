@@ -46,11 +46,10 @@ Huffman coding
 Sort the symbols by the probability of occurrence
 
 <pre style="font-size:0.7em">
-─(0.31%)─╼ 'ß'
-─(0.27%)─╼ 'J'
-─(0.04%)─╼ 'Y'
-─(0.03%)─╼ 'X'
-─(0.02%)─╼ 'Q'
+─(17.4%)─╼ 'E'
+─(9.78%)─╼ 'N'
+─(4.76%)─╼ 'H'
+─(4.35%)─╼ 'U'
 </pre>
 
 ---
@@ -62,15 +61,32 @@ Take the the two lowest ranking symbols and
 combine them into a tree node
 
 <pre style="font-size:0.7em">
-─(0.31%)─╼ 'ß'
-─(0.27%)─╼ 'J'
-         ╭─(0.03%)─╼ 'X'
-─(0.05%)─┤
-         ╰─(0.02%)─╼ 'Q'
-─(0.04%)─╼ 'Y'
+─(17.4%)─╼ 'E'
+─(9.78%)─╼ 'N'
+         ╭─(4.76%)─╼ 'H'
+─(9.11%)─┤
+         ╰─(4.35%)─╼ 'U'
 </pre>
 
 ---
+
+Huffman coding
+==============
+
+Threat the node like a single symbol,
+resort the list and create a new node
+
+<pre style="font-size:0.7em">
+          ╭─(9.78%)─╼ 'N'
+─(18.89%)─┤
+          │         ╭─(4.76%)─╼ 'H'
+          ╰─(9.11%)─┤
+                    ╰─(4.35%)─╼ 'U'
+─(17.4%)─╼ 'E'
+</pre>
+
+---
+
 
 Huffman coding
 ==============
@@ -79,13 +95,13 @@ Continue combining the lowest
 ranking nodes
 
 <pre style="font-size:0.7em">
-─(0.31%)─╼ 'ß'
-─(0.27%)─╼ 'J'
-                   ╭─(0.03%)─╼ 'X'
-         ╭─(0.05%)─┤
-         │         ╰─(0.02%)─╼ 'Q'
-─(0.09%)─┤
-         ╰─(0.04%)─╼ 'Y'
+                     ╭─(9.78%)─╼ 'N'
+          ╭─(18.89%)─┤
+          │          │         ╭─(4.76%)─╼ 'H'
+          │          ╰─(9.11%)─┤
+          │                    ╰─(4.35%)─╼ 'U'
+─(36.29%)─┤
+          ╰─(17.4%)─╼ 'E'
 </pre>
 
 ---
@@ -205,11 +221,11 @@ Compressing (Idea #1)
 =====================
 
 We only transfer the difference between
-the current and the last value.
+the current and the last value
 
 ![Sensor data Derivate](images/07_sensor_data_deriv.svg)
 
-Now most values are very close to zero.
+Now most values are very close to zero
 
 ---
 
@@ -241,7 +257,7 @@ the following probability distribution:
         2 │  13%
 
 Construct a huffman tree from the table
-above (on a piece of paper).
+above (on paper)
 
 ---
 
@@ -282,7 +298,7 @@ Assigning numbers
 
 _Observation:_ For every measured value that does not differ
 from the previous value (difference zero)
-only a single bit has to be transfered.
+only a single bit has to be transfered
 
 ---
 
@@ -324,8 +340,8 @@ using references to other nodes
 
 ---
 
-Using the huffman coding
-========================
+Using the huffman codes
+=======================
 
 Download the [example][code_compression]
 program from the previous slide
@@ -336,8 +352,8 @@ and look at its output on the
 
 ---
 
-Using the huffman coding
-========================
+Using the huffman codes
+=======================
 
 Edit the `sequence` variable at the top
 of the program so that the following output
