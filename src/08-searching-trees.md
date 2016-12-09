@@ -153,11 +153,67 @@ Strategy #2
 
 _Observation:_ By splitting the interval in half for
 each iteration we are actually following a
-binary tree structure.
+binary tree structure
 
 For `n` elements we need at most `log_2(n)` steps
-to find the element
+to find the correct element
 
 [code_guess_game]: examples/08_guess_game.ino
 
 [serial_monitor]: 03-traffic-lights.html#slide_12
+
+---
+
+Student register
+================
+
+As part of a student database we need
+a way to search for names by
+matriculation number
+
+---
+
+Student register (flat)
+=======================
+
+    !C
+    struct student_t {
+      char *name;
+      uint32_t mat_num;
+    };
+
+    struct student_t student_register[MAX_STUDENTS];
+
+In the example above: how many steps
+would we need to find a student by its
+matriculation number?
+
+---
+
+Student register (flat)
+=======================
+
+    !C
+    for(size_t i=0; i<MAX_STUDENTS; i++) {
+      if(student_register[i].mat_num == num_to_find) {
+        return(i);
+      }
+    }
+
+In the worst case (student not in database)
+we would have to look at every single entry
+
+---
+
+Student register (tree)
+=======================
+
+    !C
+    struct student_t {
+      char *name;
+      uint32_t mat_num;
+      struct student_t *child_lt;
+      struct student_t *child_gt:
+    };
+
+---
