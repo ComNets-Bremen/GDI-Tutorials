@@ -8,6 +8,8 @@
 
 'use strict';
 
+var native_scrolling= false;
+
 var config = {
   'keys' : {
     'up'   : ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'],
@@ -31,6 +33,10 @@ function changeSlideAbs(slideNum)
 {
   var newID = 'slide_' + slideNum;
 
+  if(native_scrolling) {
+    return (true);
+  }
+
   if (document.getElementById(newID)) {
     window.location.hash= '#' + newID;
 
@@ -46,7 +52,29 @@ function changeSlideRel(rel)
   return (changeSlideAbs(currentSlide() + rel));
 }
 
-function install()
+function install_native_scroll_btn()
+{
+  var footer_s1= document.getElementById('slide_1').getElementsByTagName('footer')[0];
+
+  var nscroll_aside= document.createElement('aside');
+  nscroll_aside.classList.add('scrolltoggle');
+
+  var nscroll_a= document.createElement('a');
+
+  nscroll_a.innerText= 'Enable native scrolling';
+  nscroll_a.onclick= function () {
+    var body= document.getElementsByTagName('body')[0];
+
+    native_scrolling= !native_scrolling;
+
+    body.style.overflow= native_scrolling ? 'unset' : 'hidden';
+  }
+
+  nscroll_aside.appendChild(nscroll_a);
+  footer_s1.appendChild(nscroll_aside);
+}
+
+function install_btn_hooks()
 {
   var body= document.getElementsByTagName('body')[0];
 
@@ -69,4 +97,11 @@ function install()
                           if (config.keys.end.includes(k.key)) changeSlideAbs(lastSlide);
                         },
                         false);
+
+}
+
+function install()
+{
+  install_native_scroll_btn();
+  install_btn_hooks();
 }

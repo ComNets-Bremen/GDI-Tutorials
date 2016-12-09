@@ -110,6 +110,25 @@ img {
     text-decoration: none;
 }
 
+.scrolltoggle {
+    font-size: 1vw;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    background-color: #303030;
+    padding: 0.2em 0.6em;
+    border-radius: 0 0.3em 0 0;
+    color: #d4d4d4;
+    box-shadow: 0 0 0.5em black;
+}
+
+.scrolltoggle a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .highlight {
     border: 1px solid rgb(0, 37, 57);
     background-color: rgba(0, 0, 0, 0.4);
