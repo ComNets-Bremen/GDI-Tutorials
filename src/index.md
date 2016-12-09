@@ -9,6 +9,8 @@ Semester 1
 
 07 - [Data vs. Drosselkom][t7_html] ([.pdf][t7_pdf])
 
+08 - [Searching trees][t8_html] ([.pdf][t8_pdf])
+
 [Slide sources][sources]
 
 <div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
@@ -24,5 +26,9 @@ Semester 1
 
 [t7_html]: 07-data-vs-drosselkom.html
 [t7_pdf]: 07-data-vs-drosselkom.pdf
+
+[t8_html]: 08-searching-trees.html
+[t8_pdf]: 08-searching-trees.pdf
+
 
 [sources]: https://github.com/hnez/GDITutorials
