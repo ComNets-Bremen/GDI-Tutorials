@@ -7,6 +7,93 @@ elegantly
 
 ---
 
+But first:
+
+possible solutions
+for the last assignment
+
+---
+
+Task 1
+======
+
+An array of strings
+-------------------
+
+    !C
+    char *month_names[]= {
+      "January",
+      "February",
+      "March",
+      ...
+    }
+
+[…][code_assignment_3_1]
+
+---
+
+Task 2
+======
+
+An array of structs
+-------------------
+
+    !C
+    struct month_info_t {
+      char *name;
+      uint8_t num_days;
+    };
+
+    struct month_info_t month_info[]= {
+      {.name= "January",   .num_days= 31},
+      …
+    }
+
+[…][code_assignment_3_2]
+
+---
+
+Task 3
+======
+
+Birthday countdown
+------------------
+
+    !C
+    struct date_t pivot;
+    struct date_t birthday;
+
+    for(;;) {
+      uint16_t days_next_bd=
+        date_days_between(&pivot, &birthday);
+      date_print(&pivot);
+      date_increment(&pivot);
+    }
+
+[…][code_assignment_3_3]
+
+---
+
+Task 4
+======
+
+Pointerized countdown
+
+    !C
+    struct date_t {
+      uint8_t day_of_month;
+      struct month_info_t *month;
+    };
+
+[…][code_assignment_3_4]
+
+---
+
+Back to the trees
+
+---
+
+
 Guess game
 ==========
 
@@ -330,6 +417,12 @@ Do not change the other elements
 
 Does sorting the elements before inserting them
 improve the balance of the tree?
+
+[code_assignment_3_1]: examples/08_assignment_3_1.ino
+[code_assignment_3_2]: examples/08_assignment_3_2.ino
+[code_assignment_3_3]: examples/08_assignment_3_3.ino
+[code_assignment_3_4]: examples/08_assignment_3_4.ino
+
 
 [code_guess_game]: examples/08_guess_game.ino
 [code_student_register]: examples/08_student_register.ino
