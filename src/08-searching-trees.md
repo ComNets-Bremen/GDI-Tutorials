@@ -93,7 +93,6 @@ Back to the trees
 
 ---
 
-
 Guess game
 ==========
 
@@ -291,17 +290,42 @@ Student register (flat)
 
     struct student_t student_register[MAX_STUDENTS];
 
-In the example above: how many steps
-would we need to find a student by its
-matriculation number?
+One way to structure the data is to
+use a simple array
+
+This is a flat structure
 
 ---
 
-Student register (flat)
+Student lookup (flat)
+=====================
+
+    !C
+    struct student_t *
+    sr_flat_lookup(struct student_t *flat,
+                   uint32_t mat_num)
+
+Download the [database sourcecode][code_student_register]
+and find the `sr_flat_lookup` function
+
+Use a `for` loop to iterate through all elements of `flat[]`
+while checking if the matriculation number matches `mat_num`
+
+Return the current array element if the matriculation
+number matches
+
+Test your implementation in the serial monitor
+
+_Hint:_ Add a `.` or another symbol
+after the numbers you enter into the monitor
+
+---
+
+Student lookup (flat)
 =======================
 
     !C
-    for(size_t i=0; i<MAX_STUDENTS; i++) {
+    for (size_t i=0; flat[i].name; i++) {
       if(student_register[i].mat_num == num_to_find) {
         return(i);
       }
@@ -309,6 +333,8 @@ Student register (flat)
 
 In the worst case (student not in database)
 we would have to look at every single entry
+
+Can we do better?
 
 ---
 
@@ -343,8 +369,8 @@ Student register (tree)
       sr_print_subtree(root->child_gt, indent+1);
     }
 
-Upload the [example code][code_student_register] to
-your Arduino
+Change the `DEBUG_TBUILD` and `DEBUG_LOOKUP` `#define`
+at the top of the file from `false` to `true`
 
 Watch the output in the serial monitor
 and try to find out how new elements are inserted into the tree
@@ -361,6 +387,20 @@ looked up in the tree
 
 _Hint:_ Add a `.` or another symbol
 after the numbers you enter
+
+---
+
+Comparing speed
+===============
+
+Change the `DEBUG_TBUILD` and `DEBUG_LOOKUP` `#define`
+at the top of the file back from `true` to `false`
+
+Compare the displayed runtimes for the
+two lookup algorithms
+
+How does the position of an entry in the array influence
+the lookup times?
 
 ---
 
@@ -391,12 +431,15 @@ Tree balance
   ╰──┾ Paulette Petrone(4001246)
 </pre>
 
-There are far more elements behind
+In the tree above you can see that there are
+far more elements behind
 the `child_lt`-branch of "Clifford Calahan"
 than behind the `child_gt`-branch
 
 This indicates that the tree is not well
 balanced
+
+Tree balance influeces the lookup speed
 
 ---
 

@@ -1,8 +1,8 @@
 /* Enable or disable verbose output
  * on the serial line in the
  * tree building/lookup phases */
-#define DEBUG_TBUILD (true)
-#define DEBUG_LOOKUP (true)
+#define DEBUG_TBUILD (false)
+#define DEBUG_LOOKUP (false)
 
 /* Define a type that collects informations
  * about a student (name, mat_num)
@@ -171,24 +171,17 @@ struct student_t *sr_flat_lookup(struct student_t *flat, uint32_t mat_num)
     Serial.println(mat_num);
   }
 
-  for (size_t i=1; flat[i].name; i++) {
-    if(DEBUG_LOOKUP) {
-      Serial.print(mat_num);
-      Serial.print((flat[i].mat_num == mat_num) ? "==" : "!=");
-      Serial.println(flat[i].mat_num);
-    }
+  /* TODO: Implement lookup by iterating
+   * through the elements of flat[] */
 
-
-    if(flat[i].mat_num == mat_num) {
-      return(&flat[i]);
-    }
-  }
+  /* If an element is found return it using
+   * return(&flat[i]); */
 
   return(NULL);
 }
 
 /**
- *  Reads a single decimal number from
+ * Reads a single decimal number from
  * the serial input and returns it.
  * Needs a non-digit as end marker
  */
@@ -220,6 +213,8 @@ uint32_t number_from_serial(void)
     }
   }
 
+  Serial.print("\n");
+
   return(num_in);
 }
 
@@ -229,7 +224,6 @@ void setup()
 
   sr_flat= student_register;
   sr_tree= sr_generate_tree(sr_flat);
-
 }
 
 void loop()
@@ -237,16 +231,41 @@ void loop()
   Serial.print("\nEnter a mat_num to search for: ");
 
   uint32_t query_num= number_from_serial();
-  struct student_t *res= NULL;
 
+  /* Perform lookup using the flat search
+   * algorith and keep track of runtime */
+  uint32_t runtime_flat= micros();
+  struct student_t * res_flat= sr_flat_lookup(sr_tree, query_num);
+  runtime_flat= micros() - runtime_flat;
 
-  res= sr_tree_lookup(sr_tree, query_num);
-
-  if(res) {
-    Serial.print("Found student ");
-    Serial.println(res->name);
+  if(res_flat) {
+    Serial.print("Flat lookup: found student ");
+    Serial.print(res_flat->name);
   }
   else {
-    Serial.println("Did not find a student");
+    Serial.print("Flat lookup: did not find a student");
   }
+
+  Serial.print(" in ");
+  Serial.print(runtime_flat);
+  Serial.println("us ");
+
+
+  /* Perform lookup using the tree search
+   * algorith and keep track of runtime */
+  uint32_t runtime_tree= micros();
+  struct student_t *res_tree= sr_tree_lookup(sr_tree, query_num);
+  runtime_tree= micros() - runtime_tree;
+
+  if(res_tree) {
+    Serial.print("Tree lookup: found student ");
+    Serial.print(res_tree->name);
+  }
+  else {
+    Serial.print("Tree lookup: did not find a student");
+  }
+
+  Serial.print(" in ");
+  Serial.print(runtime_tree);
+  Serial.println("us ");
 }
