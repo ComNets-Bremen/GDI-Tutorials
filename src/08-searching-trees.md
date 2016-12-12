@@ -254,6 +254,47 @@ Fifth Guess: 7
 
 ---
 
+Complete decision tree
+
+<pre style="font-size:0.3em">
+                      ╭─(&lt;)──╼ 1
+               ╭─(&lt;)──┤ 2
+               │      ╰─(&gt;)──╼ 3
+        ╭─(&lt;)──┤ 4
+        │      │      ╭─(&lt;)──╼ 5
+        │      ╰─(&gt;)──┤ 6
+        │             ╰─(&gt;)──╼ 7
+ ╭─(&lt;)──┤ 8
+ │      │             ╭─(&lt;)──╼ 9
+ │      │      ╭─(&lt;)──┤ 10
+ │      │      │      ╰─(&gt;)──╼ 11
+ │      ╰─(&gt;)──┤ 12
+ │             │      ╭─(&lt;)──╼ 13
+ │             ╰─(&gt;)──┤ 14
+ │                    ╰─(&gt;)──╼ 15
+─┤ 16
+ │                    ╭─(&lt;)──╼ 17
+ │             ╭─(&lt;)──┤ 18
+ │             │      ╰─(&gt;)──╼ 19
+ │      ╭─(&lt;)──┤ 20
+ │      │      │      ╭─(&lt;)──╼ 21
+ │      │      ╰─(&gt;)──┤ 22
+ │      │             ╰─(&gt;)──╼ 23
+ ╰─(&gt;)──┤ 24
+        │             ╭─(&lt;)──╼ 25
+        │      ╭─(&lt;)──┤ 26
+        │      │      ╰─(&gt;)──╼ 27
+        ╰─(&gt;)──┤ 28
+               │      ╭─(&lt;)──╼ 29
+               ╰─(&gt;)──┤ 30
+                      ╰─(&gt;)──╼ 31
+</pre>
+
+[…][output_decision_tree]
+[.py][code_decision_tree]
+
+---
+
 Strategy #2
 ===========
 
@@ -473,6 +514,8 @@ improve the balance of the tree?
 [code_assignment_3_3]: examples/08_assignment_3_3.ino
 [code_assignment_3_4]: examples/08_assignment_3_4.ino
 
+[output_decision_tree]: examples/08_decision_tree.html
+[code_decision_tree]: examples/08_decision_tree.py
 
 [code_guess_game]: examples/08_guess_game.ino
 [code_student_register_flat]: examples/08_student_register_flat.ino
