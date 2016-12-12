@@ -76,7 +76,7 @@ void sr_print_subtree(struct student_t *root, uint16_t indent)
 }
 
 /**
- *  This function takes a list of students as
+ * This function takes a list of students as
  * input argument and adds cross references
  * to the elements to arrange them in a
  * tree structure.
@@ -171,11 +171,8 @@ struct student_t *sr_flat_lookup(struct student_t *flat, uint32_t mat_num)
     Serial.println(mat_num);
   }
 
-  /* TODO: Implement lookup by iterating
-   * through the elements of flat[] */
-
-  /* If an element is found return it using
-   * return(&flat[i]); */
+  /* TODO: Copy your implementation
+   * from the last task */
 
   return(NULL);
 }
@@ -235,7 +232,7 @@ void loop()
   /* Perform lookup using the flat search
    * algorith and keep track of runtime */
   uint32_t runtime_flat= micros();
-  struct student_t * res_flat= sr_flat_lookup(sr_tree, query_num);
+  struct student_t * res_flat= sr_flat_lookup(sr_flat, query_num);
   runtime_flat= micros() - runtime_flat;
 
   if(res_flat) {

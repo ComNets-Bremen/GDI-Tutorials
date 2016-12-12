@@ -305,7 +305,7 @@ Student lookup (flat)
     sr_flat_lookup(struct student_t *flat,
                    uint32_t mat_num)
 
-Download the [database sourcecode][code_student_register]
+Download the [database sourcecode][code_student_register_flat]
 and find the `sr_flat_lookup` function
 
 Use a `for` loop to iterate through all elements of `flat[]`
@@ -349,7 +349,7 @@ Student register (tree)
       struct student_t *child_gt;
     };
 
-[…][code_student_register]
+[…][code_student_register_tree]
 
 To make lookups more efficient we can
 hook the database entries into
@@ -368,6 +368,9 @@ Student register (tree)
       Serial.print(root->name);
       sr_print_subtree(root->child_gt, indent+1);
     }
+
+Download the tree based
+[database sourcevode][code_student_register_tree]
 
 Change the `DEBUG_TBUILD` and `DEBUG_LOOKUP` `#define`
 at the top of the file from `false` to `true`
@@ -395,6 +398,9 @@ Comparing speed
 
 Change the `DEBUG_TBUILD` and `DEBUG_LOOKUP` `#define`
 at the top of the file back from `true` to `false`
+
+Copy your implementation of `sr_flat_lookup`
+into the file
 
 Compare the displayed runtimes for the
 two lookup algorithms
@@ -468,6 +474,7 @@ improve the balance of the tree?
 
 
 [code_guess_game]: examples/08_guess_game.ino
-[code_student_register]: examples/08_student_register.ino
+[code_student_register_flat]: examples/08_student_register_flat.ino
+[code_student_register_tree]: examples/08_student_register_tree.ino
 
 [serial_monitor]: 03-traffic-lights.html#slide_12

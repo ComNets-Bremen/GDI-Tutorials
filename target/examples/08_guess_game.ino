@@ -41,6 +41,11 @@ void setup()
 {
   Serial.begin(9600);
 
+  /* Rely on the A0 being a
+   * floating input pin with a random
+   * voltage */
+  randomSeed(analogRead(A0));
+
   num_to_guess= random(GUESS_RANGE);
 }
 

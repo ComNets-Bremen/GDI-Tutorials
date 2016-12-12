@@ -15,5 +15,5 @@ struct month_info_t month_info[]= {
   {.name= "September", .num_days= 30},
   {.name= "October",   .num_days= 31},
   {.name= "November",  .num_days= 30},
-  {.name= "December"   .num_days= 31}
+  {.name= "December",  .num_days= 31}
 };
