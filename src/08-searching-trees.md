@@ -325,10 +325,9 @@ Student lookup (flat)
 =======================
 
     !C
-    for (size_t i=0; flat[i].name; i++) {
-      if(student_register[i].mat_num == num_to_find) {
-        return(i);
-      }
+    for(size_t i=0; flat[i].name; i++) {
+      if(flat[i].mat_num == mat_num)
+        return(&flat[i]);
     }
 
 In the worst case (student not in database)
@@ -445,7 +444,7 @@ than behind the `child_gt`-branch
 This indicates that the tree is not well
 balanced
 
-Tree balance influeces the lookup speed
+Tree balance influences the lookup speed
 
 ---
 
@@ -463,6 +462,8 @@ so that the matriculation numbers of the
 first eight entries are in ascending order
 
 Do not change the other elements
+
+`#define` `DEBUG_TBUILD` to be `true`
 
 Does sorting the elements before inserting them
 improve the balance of the tree?

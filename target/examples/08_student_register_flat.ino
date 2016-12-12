@@ -110,8 +110,6 @@ uint32_t number_from_serial(void)
 void setup()
 {
   Serial.begin(9600);
-
-  sr_flat= student_register;
 }
 
 void loop()
