@@ -370,7 +370,7 @@ Student register (tree)
     }
 
 Download the tree based
-[database sourcevode][code_student_register_tree]
+[database sourcecode][code_student_register_tree]
 
 Change the `DEBUG_TBUILD` and `DEBUG_LOOKUP` `#define`
 at the top of the file from `false` to `true`
