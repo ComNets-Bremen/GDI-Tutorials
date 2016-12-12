@@ -98,6 +98,9 @@ function install_btn_hooks()
                         },
                         false);
 
+  body.onresize= function() {
+    changeSlideRel(0);
+  };
 }
 
 function install()
