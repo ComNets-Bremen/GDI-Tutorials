@@ -115,6 +115,8 @@ the instructions in the [serial monitor][serial_monitor]
 _Hint:_ Add a `.` or another symbol
 after the numbers you enter
 
+_Hint:_ The number is between 0 and 31
+
 ---
 
 Strategy #1
