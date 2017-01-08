@@ -55,6 +55,7 @@ li li {
 
 img {
     height: 9em;
+    max-width: 100%;
 }
 
 .slidebox {
