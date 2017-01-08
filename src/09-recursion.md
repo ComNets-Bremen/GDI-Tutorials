@@ -255,7 +255,7 @@ Stack overflow
      0x00ff
     -0x0000 "Stuff"
 
-Local variables like `arr` are stored in the
+Local variables like `arr` are stored on the
 stack
 
 The stack is located at the end of RAM
@@ -352,7 +352,8 @@ Brainfuck
 Brainfuck operates on an infinite tape
 like the original turing machine
 
-The characters have the following meanings:
+The characters the program consists of
+have the following meanings:
 
     >/< - move to the next/previous tape position
     +/- - increment/decrement the value at the tape position

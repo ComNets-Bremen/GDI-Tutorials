@@ -11,6 +11,8 @@ Semester 1
 
 08 - [Searching trees][t8_html] ([.pdf][t8_pdf])
 
+09 - [Recursion][t9_html] ([.pdf][t9_pdf])
+
 [Slide sources][sources]
 
 <div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
@@ -29,6 +31,9 @@ Semester 1
 
 [t8_html]: 08-searching-trees.html
 [t8_pdf]: 08-searching-trees.pdf
+
+[t9_html]: 09-recursion.html
+[t9_pdf]: 09-recursion.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
