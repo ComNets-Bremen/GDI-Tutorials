@@ -140,14 +140,74 @@ is the item itself
 tree_max()
 ==========
 
+    !C
+    uint32_t tree_max(struct node_t *root)
+    {
+      uint32_t max_val= root->value;
+      …
+      return(max_val);
+    }
+
 […][code_tree_max_broken]
+
+The `tree_max` function should return the largest
+value in a binary tree using recursion
+
+It does not work. Find the errors and
+fix them
 
 ---
 
-tree_max()
-==========
+tree_max() - Error #1
+=====================
+
+    !C
+    if(root->child_l) {
+      uint32_t max_cl= tree_max(root->child_l);
+
+      if(max_cl > max_val) max_val= max_cl;
+    }
+
+To make the function recursive `tree_max` has
+to be called on a subset of the previous problem
+(the child nodes)
+
+---
+
+tree_max() - Error #2
+=====================
+
+    !C
+    if(root->child_r) {
+      uint32_t max_cr= tree_max(root->child_r);
+
+      if(max_cr > max_val) max_val= max_cr;
+    }
 
 […][code_tree_max]
+
+To reach every node in the tree
+the left _and_ right branch must be taken
+
+---
+
+tree_max() - 1337
+=================
+
+    !C
+    uint32_t tree_max(struct node_t *root)
+    {
+      uint32_t max_val= root->value;
+      …
+      return(max_val);
+    }
+
+[…][code_tree_max_1337]
+
+The code above contains a more difficult
+to find error
+
+Try to fix it
 
 ---
 
@@ -330,4 +390,5 @@ and observe the output of the program
 [code_arr_max]: examples/09_arr_max.ino
 [code_tree_max_broken]: examples/09_tree_max_broken.ino
 [code_tree_max]: examples/09_tree_max.ino
+[code_tree_max_1337]: examples/09_tree_max_1337.ino
 [code_brainfuck]: examples/09_afuck.ino
