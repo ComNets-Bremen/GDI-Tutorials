@@ -322,7 +322,7 @@ Stack overflow
 To prevent stack overflows you should
 only ever use recursive functions when
 you know that the calls will not be nested
-to deeply
+too deeply
 
 Most modern operating systems will
 prevent the stack from running into the heap
