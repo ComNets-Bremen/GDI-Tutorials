@@ -1,7 +1,7 @@
 Recursion
 =========
 
-![Search result](images/09_recursion_search.png)
+![Search result](images/10_recursion_search.png)
 
 ---
 
@@ -237,7 +237,7 @@ When the broken arr_max function runs
 on the Arduino the Serial monitor displays
 gibberish
 
-![Serial monitor Stack overflow](images/09_arduino_stack_overflow.png)
+![Serial monitor Stack overflow](images/10_arduino_stack_overflow.png)
 
 Why is that?
 
@@ -385,11 +385,11 @@ Download the code above, implement
 the missing operations, disable the debug mode
 and observe the output of the program
 
-[code_factorial_broken]: examples/09_factorial_broken.ino
-[code_factorial]: examples/09_factorial.ino
-[code_arr_max_broken]: examples/09_arr_max_broken.ino
-[code_arr_max]: examples/09_arr_max.ino
-[code_tree_max_broken]: examples/09_tree_max_broken.ino
-[code_tree_max]: examples/09_tree_max.ino
-[code_tree_max_1337]: examples/09_tree_max_1337.ino
-[code_brainfuck]: examples/09_afuck.ino
+[code_factorial_broken]: examples/10_factorial_broken.ino
+[code_factorial]: examples/10_factorial.ino
+[code_arr_max_broken]: examples/10_arr_max_broken.ino
+[code_arr_max]: examples/10_arr_max.ino
+[code_tree_max_broken]: examples/10_tree_max_broken.ino
+[code_tree_max]: examples/10_tree_max.ino
+[code_tree_max_1337]: examples/10_tree_max_1337.ino
+[code_brainfuck]: examples/10_afuck.ino
