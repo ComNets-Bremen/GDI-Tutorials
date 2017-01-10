@@ -34,8 +34,8 @@ void loop()
     1570,  258, 1394, 3523, 2846, 1424, 3866,  621
   };
 
-  Serial.print("arr_max(arr, 32)= ");
-  Serial.println(arr_max(arr, 32));
+  Serial.print("arr_max(arr, 64)= ");
+  Serial.println(arr_max(arr, 64));
 
   delay(5000);
 }
