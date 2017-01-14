@@ -37,8 +37,8 @@ Semester 1
 [t10_html]: 10-recursion.html
 [t10_pdf]: 10-recursion.pdf
 
-[t11_html]: 10-serial-io.html
-[t11_pdf]: 10-serial-io.pdf
+[t11_html]: 11-serial-io.html
+[t11_pdf]: 11-serial-io.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
