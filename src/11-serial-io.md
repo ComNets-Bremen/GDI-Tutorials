@@ -6,6 +6,70 @@ talk to the Arduino
 
 ---
 
+_But first:_
+
+solutions to the last assignment
+
+---
+
+Morse tree
+==========
+
+<p>
+  <video poster="images/11_morse_flash.jpg" controls loop>
+    <source src="images/11_morse_flash.mp4" type="video/mp4">
+  </video>
+</p>
+
+[…][code_morse_sender]
+
+The code above sends some special characters
+to test the tree based decoder
+
+---
+
+Morse tree
+==========
+
+    !C
+    struct morse_tree tree_N_with_donald_hair =
+      {"Ñ", NULL, NULL};
+    struct morse_tree tree_funny_hat_G =
+      {"Ĝ", NULL, NULL};
+    struct morse_tree tree_tick =
+      {"'", NULL, NULL};
+
+[…][code_morse_receiver]
+
+The code above receives the morse code
+and decodes it
+
+---
+
+LED Tree
+========
+
+    !C
+    uint32_t now= millis();
+    if(now >= next_tree) {
+      …
+      cur_node= random(2) ?
+        cur_node->child_l : cur_node->child_r;
+      digitalWrite(cur_node->pin, HIGH);
+      …
+    }
+
+[…][code_humbug_tree]
+
+Uses `millis()` instead of `delay()` to
+meet timing requirements
+
+---
+
+_Back to serial io_
+
+---
+
 The serial port
 ===============
 
@@ -182,6 +246,11 @@ Regular expressions
 
 <span style="color: #859900">Maaaagic</span>
 <span style="color: #997C00">match</span>ing machine
+
+[code_morse_sender]: examples/11_morse_sender.ino
+[code_morse_receiver]: examples/11_morse_receiver.ino
+
+[code_humbug_tree]: examples/11_humbug_tree.ino
 
 [code_echo]: examples/11_echo.ino
 [code_reverse]: examples/11_reverse.ino
