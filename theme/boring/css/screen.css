@@ -53,7 +53,7 @@ li li {
     margin-left: 2vw;
 }
 
-img {
+img, video {
     height: 9em;
     max-width: 100%;
 }

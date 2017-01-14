@@ -13,6 +13,8 @@ Semester 1
 
 10 - [Recursion][t10_html] ([.pdf][t10_pdf])
 
+11 - [Serial/Regex][t11_html] ([.pdf][t11_pdf])
+
 [Slide sources][sources]
 
 <div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
@@ -34,6 +36,9 @@ Semester 1
 
 [t10_html]: 10-recursion.html
 [t10_pdf]: 10-recursion.pdf
+
+[t11_html]: 10-serial-io.html
+[t11_pdf]: 10-serial-io.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
