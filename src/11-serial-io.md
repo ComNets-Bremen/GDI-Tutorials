@@ -281,13 +281,50 @@ slide
 
 ---
 
-Terminal basics
-===============
+grep
+====
 
-On unix like operating systems (Linux/macOS) the `grep`
-can be used to find lines in files
+On Linux/macOS the [`grep`][man_grep]
+command can be used to find lines in files that match
+a regular expression
 
+Windows users can try the [`sls`][man_sls] command
+or a web based regular expression tester
 
+---
+
+grep
+====
+
+The general syntax is
+
+Linux/macOS: `$ grep -E "regular expression" filename`
+
+Windows: `PS C:\> sls "regular expression" filename`
+
+<p>
+  <video poster="images/11_grep.jpg" controls>
+    <source src="images/11_grep.mp4" type="video/mp4">
+  </video>
+</p>
+
+The example above searches for all lines that contain
+a twitter handle as contact info
+
+---
+
+grep
+====
+
+Using the lecture slides and other ressources
+write regular expressions that match on lines
+that contain …
+
+- … an email address
+- … a telephone number
+- … an UK based telephone number
+- … surnames between 1 and 5 characters long
+- … email address on a .uk domain
 
 [code_morse_sender]: examples/11_morse_sender.ino
 [code_morse_receiver]: examples/11_morse_receiver.ino
@@ -299,3 +336,6 @@ can be used to find lines in files
 [code_rot13]: examples/11_rot13.ino
 
 [file_students]: examples/11_students.txt
+
+[man_grep]: https://linux.die.net/man/1/grep
+[man_sls]: https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.utility/select-string
