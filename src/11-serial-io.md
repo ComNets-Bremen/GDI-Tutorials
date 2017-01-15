@@ -247,6 +247,48 @@ Regular expressions
 <span style="color: #859900">Maaaagic</span>
 <span style="color: #997C00">match</span>ing machine
 
+---
+
+Regular expressions
+===================
+
+    Michael Corner, @edgesncorners
+    Dean Thomas, @magic_dean
+    Sue Li, @sureli
+    Demelza Robins, dem@magic.com
+    Susan Bones, sbones@minimagic.gov.uk
+
+[…][file_students]
+
+The list above contains Names and different kinds of contact
+informations
+
+---
+
+Terminal basics
+===============
+
+Open a terminal/console/powershell window
+
+<p>
+  <video poster="images/11_wget.jpg" controls>
+    <source src="images/11_wget.mp4" type="video/mp4">
+  </video>
+</p>
+
+Use wget to download the file linked in the previos
+slide
+
+---
+
+Terminal basics
+===============
+
+On unix like operating systems (Linux/macOS) the `grep`
+can be used to find lines in files
+
+
+
 [code_morse_sender]: examples/11_morse_sender.ino
 [code_morse_receiver]: examples/11_morse_receiver.ino
 
@@ -255,3 +297,5 @@ Regular expressions
 [code_echo]: examples/11_echo.ino
 [code_reverse]: examples/11_reverse.ino
 [code_rot13]: examples/11_rot13.ino
+
+[file_students]: examples/11_students.txt
