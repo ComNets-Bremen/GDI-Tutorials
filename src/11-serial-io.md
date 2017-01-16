@@ -16,8 +16,9 @@ Morse tree
 ==========
 
 <p>
-  <video poster="images/11_morse_flash.jpg" controls loop>
+  <video poster="images/11_morse_flash.jpg" controls loop preload="none">
     <source src="images/11_morse_flash.mp4" type="video/mp4">
+    <source src="images/11_morse_flash.webm" type="video/webm">
   </video>
 </p>
 
@@ -135,8 +136,9 @@ use `read_line` to enable conversations like
 the following:
 
 <p>
-  <video poster="images/11_echo_conversation.jpg" controls>
+  <video poster="images/11_echo_conversation.jpg" controls preload="none">
     <source src="images/11_echo_conversation.mp4" type="video/mp4">
+    <source src="images/11_echo_conversation.webm" type="video/webm">
   </video>
 </p>
 
@@ -172,8 +174,9 @@ repair `reverse_string` to enable conversations like
 the following:
 
 <p>
-  <video poster="images/11_reverse_conversation.jpg" controls>
+  <video poster="images/11_reverse_conversation.jpg" controls preload="none">
     <source src="images/11_reverse_conversation.mp4" type="video/mp4">
+    <source src="images/11_reverse_conversation.webm" type="video/webm">
   </video>
 </p>
 
@@ -232,8 +235,9 @@ Fix the `rot13_string` function to enable conversations like
 the following:
 
 <p>
-  <video poster="images/11_rot13_conversation.jpg" controls>
+  <video poster="images/11_rot13_conversation.jpg" controls preload="none">
     <source src="images/11_rot13_conversation.mp4" type="video/mp4">
+    <source src="images/11_rot13_conversation.webm" type="video/webm">
   </video>
 </p>
 
@@ -271,8 +275,9 @@ Terminal basics
 Open a terminal/console/powershell window
 
 <p>
-  <video poster="images/11_wget.jpg" controls>
+  <video poster="images/11_wget.jpg" controls preload="none">
     <source src="images/11_wget.mp4" type="video/mp4">
+    <source src="images/11_wget.webm" type="video/webm">
   </video>
 </p>
 
@@ -303,8 +308,9 @@ Linux/macOS: `$ grep -E "regular expression" filename`
 Windows: `PS C:\> sls "regular expression" filename`
 
 <p>
-  <video poster="images/11_grep.jpg" controls>
+  <video poster="images/11_grep.jpg" controls preload="none">
     <source src="images/11_grep.mp4" type="video/mp4">
+    <source src="images/11_grep.webm" type="video/webm">
   </video>
 </p>
 
