@@ -317,6 +317,20 @@ When you are doing calculations on sizes (dangerous)
 and the result may be negative (very dangerous)
 you should use the signed `ssize_t` type.
 
+---
+
+lshalfslide
+===========
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.3 or any later version published by the Free Software
+Foundation; with no Invariant Sections, no Front-Cover Texts, and
+no Back-Cover Texts.
+
+[source code](https://github.com/hnez/GdiTutorials)
+
+
 [code_slice_bits]: examples/05_slice_bits.ino
 [code_seg_table]: examples/05_seg_table.ino
 [code_u_dead]: examples/05_u_dead.ino

@@ -369,6 +369,20 @@ to the Arduino.
 Once the upload is successfull the uploaded program
 is started.
 
+---
+
+lshalfslide
+===========
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.3 or any later version published by the Free Software
+Foundation; with no Invariant Sections, no Front-Cover Texts, and
+no Back-Cover Texts.
+
+[source code](https://github.com/hnez/GdiTutorials)
+
+
 [redmond_inst]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-windows.exe
 [redmond_zip]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-windows.zip
 [cupertino_zip]: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.12-macosx.zip

@@ -83,7 +83,7 @@ img, video {
     box-shadow: 0 0.7em 0.5em -0.6em black;
 }
 
-.slidebox section {
+.slidebox section, .halfslidebox section {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -91,6 +91,29 @@ img, video {
     transform: translate(-50%, -50%);
 
     width: 65vw;
+}
+
+.halfslidebox {
+    width: 100%;
+    height: 4em;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+}
+
+.halfslidebox p {
+    font-size: 0.5em;
+    margin: 0.5vmax;
+}
+
+.halfslidebox a {
+    color: #4e4e4e;
+    text-decoration: underline;
+}
+
+.halfslidebox footer {
+    display: none;
 }
 
 .slidenum {
