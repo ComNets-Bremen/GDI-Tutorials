@@ -23,7 +23,8 @@ Remote status monitor
 ![LED Setup](schematic/03_three_leds.svg)
 
 In [tutorial three][ref_tut3] we used
-three LEDs as a status indicator
+three LEDs, a potentiometer and an Arduino
+as a status indicator
 
 Now we want to implement the same
 functionality using two Arduinos
@@ -39,7 +40,7 @@ Connect the LEDs and Potentiometer
 as described in [tutorial three][ref_tut3]
 
 Verify that the hardware setup works
-using one of the [working examples][ref_tut3_status]
+using one of the working [code examples][ref_tut3_status]
 
 ---
 
@@ -51,7 +52,9 @@ Two Arduinos
 For the next tasks we will need two Arduinos
 
 Assemble in groups and decide who will
-write code for the sending/receiving unit
+write code for the 
+[sending][jmp_sender] /
+[receiving][jmp_receiver] unit
 
 ---
 
@@ -63,7 +66,7 @@ analog values from the potentiometer,
 encode them and transfer them using
 `SoftwareSerial` on pins `2` and `3`
 
-Use the code from the introduction slides
+Use the code from [tutorial three][ref_tut3_status]
 and the code from the [lecture][code_soft_writer]
 as a reference
 
@@ -80,7 +83,7 @@ using `SoftwareSerial` on pins `2` and `3`,
 decode them and turn
 on the corresponding LEDs
 
-Use the code from the introduction slides
+Use the code from [tutorial three][ref_tut3_status]
 and the code from the [lecture][code_soft_reader]
 as a reference
 
@@ -209,6 +212,9 @@ no Back-Cover Texts.
 
 [ref_tut3]: 03-traffic-lights.html
 [ref_tut3_status]: 03-traffic-lights.html#slide_15
+
+[jmp_sender]: #slide_5
+[jmp_receiver]: #slide_6
 
 [code_soft_writer]: examples/13_soft_serial_writer.ino
 [code_soft_reader]: examples/13_soft_serial_reader.ino
