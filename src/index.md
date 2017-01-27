@@ -1,3 +1,14 @@
+<!--
+
+                  Copyright (C)  2017  Leonard Göhrs.
+   Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3
+     or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+      A copy of the license is included in the file "LICENSE-FDL.txt".
+
+-->
+
 Semester 1
 ==========
 
@@ -14,6 +25,8 @@ Semester 1
 10 - [Recursion][t10_html] ([.pdf][t10_pdf])
 
 11 - [Serial/Regex][t11_html] ([.pdf][t11_pdf])
+
+13 - ['DuinoNet][t13_html] ([.pdf][t13_pdf])
 
 [Slide sources][sources]
 
@@ -39,6 +52,9 @@ Semester 1
 
 [t11_html]: 11-serial-io.html
 [t11_pdf]: 11-serial-io.pdf
+
+[t13_html]: 13-duinonet.html
+[t13_pdf]: 13-duinonet.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
