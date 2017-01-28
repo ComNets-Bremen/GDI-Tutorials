@@ -197,8 +197,6 @@ Working example
 
 […][code_diy_sender]
 
-[source code](https://github.com/hnez/GdiTutorials)
-
 [ref_tut3]: 03-traffic-lights.html
 [ref_tut3_status]: 03-traffic-lights.html#slide_15
 
