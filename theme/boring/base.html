@@ -36,17 +36,12 @@
 
   <body onload="install()">
     {% for slide in slides %}
-
-    {% if slide.header == "<h1>lshalfslide</h1>" %}
-    <div class="halfslidebox" id="slide_{{ slide.number }}">
-    {% else %}
     <div class="slidebox" id="slide_{{ slide.number }}">
       {% if slide.header %}
       <header>
         {{ slide.header }}
       </header>
       {% endif %}
-    {% endif %}
 
       {% if slide.content %}
       <section>

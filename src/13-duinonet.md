@@ -52,7 +52,7 @@ Two Arduinos
 For the next tasks we will need two Arduinos
 
 Assemble in groups and decide who will
-write code for the 
+write code for the
 [sending][jmp_sender] /
 [receiving][jmp_receiver] unit
 
@@ -105,8 +105,8 @@ Working Example
 
 ---
 
-DIY Serial.write
-================
+DIY Serial.write (optional)
+---------------------------
 
     high ─┐ ┌─────┐     ┌──────
           │ │     │     │
@@ -196,17 +196,6 @@ Working example
     uart_bit_send(HIGH);
 
 […][code_diy_sender]
-
----
-
-lshalfslide
-===========
-
-Permission is granted to copy, distribute and/or modify this
-document under the terms of the GNU Free Documentation License,
-Version 1.3 or any later version published by the Free Software
-Foundation; with no Invariant Sections, no Front-Cover Texts, and
-no Back-Cover Texts.
 
 [source code](https://github.com/hnez/GdiTutorials)
 

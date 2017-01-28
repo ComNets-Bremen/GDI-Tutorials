@@ -396,20 +396,6 @@ Download the code above, implement
 the missing operations, disable the debug mode
 and observe the output of the program
 
----
-
-lshalfslide
-===========
-
-Permission is granted to copy, distribute and/or modify this
-document under the terms of the GNU Free Documentation License,
-Version 1.3 or any later version published by the Free Software
-Foundation; with no Invariant Sections, no Front-Cover Texts, and
-no Back-Cover Texts.
-
-[source code](https://github.com/hnez/GdiTutorials)
-
-
 [code_factorial_broken]: examples/10_factorial_broken.ino
 [code_factorial]: examples/10_factorial.ino
 [code_arr_max_broken]: examples/10_arr_max_broken.ino

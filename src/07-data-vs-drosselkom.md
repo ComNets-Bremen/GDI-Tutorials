@@ -380,20 +380,6 @@ is produced on the serial monitor:
 _Hint:_ The program uses the encoding
 developed on the previous slides
 
----
-
-lshalfslide
-===========
-
-Permission is granted to copy, distribute and/or modify this
-document under the terms of the GNU Free Documentation License,
-Version 1.3 or any later version published by the Free Software
-Foundation; with no Invariant Sections, no Front-Cover Texts, and
-no Back-Cover Texts.
-
-[source code](https://github.com/hnez/GdiTutorials)
-
-
 [full_de_tree]: examples/07_huffman_tree.html
 [code_tree_gen]: examples/07_huffman_tree.py
 

@@ -522,20 +522,6 @@ Do not change the other elements
 Does sorting the elements before inserting them
 improve the balance of the tree?
 
----
-
-lshalfslide
-===========
-
-Permission is granted to copy, distribute and/or modify this
-document under the terms of the GNU Free Documentation License,
-Version 1.3 or any later version published by the Free Software
-Foundation; with no Invariant Sections, no Front-Cover Texts, and
-no Back-Cover Texts.
-
-[source code](https://github.com/hnez/GdiTutorials)
-
-
 [code_assignment_3_1]: examples/08_assignment_3_1.ino
 [code_assignment_3_2]: examples/08_assignment_3_2.ino
 [code_assignment_3_3]: examples/08_assignment_3_3.ino
