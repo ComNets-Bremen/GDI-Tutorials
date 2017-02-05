@@ -28,9 +28,9 @@ Semester 1
 
 13 - ['DuinoNet][t13_html] ([.pdf][t13_pdf])
 
-[Slide sources][sources]
+14 - [The final homework][t14_html] ([.pdf][t14_pdf])
 
-<div style="text-align: center; margin-top: 2em;">leonard.goehrs.eu/gditut</div>
+[Slide sources][sources]
 
 [t1_html]: 01-arduino-flicker-candle.html
 [t1_pdf]: 01-arduino-flicker-candle.pdf
@@ -55,6 +55,9 @@ Semester 1
 
 [t13_html]: 13-duinonet.html
 [t13_pdf]: 13-duinonet.pdf
+
+[t14_html]: 14-homework-solution.html
+[t14_pdf]: 14-homework-solution.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
