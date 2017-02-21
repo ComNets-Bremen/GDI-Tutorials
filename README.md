@@ -1,3 +1,5 @@
+[See it in action][www_rendered]
+
 GDI Tutorials
 =============
 
@@ -51,6 +53,7 @@ The theme files under `/theme/boring` may also be used
 under the Creative Commons Zero ([CC0][www_cc_zero]) license
 for easier integration into other projects.
 
+[www_rendered]: https://tut.zerforscht.de/gdi/
 [www_landslide]: https://github.com/adamzap/landslide
 [www_gnu_fdl]: http://www.gnu.org/licenses/fdl.html
 [www_cc_zero]: https://creativecommons.org/publicdomain/zero/1.0/
