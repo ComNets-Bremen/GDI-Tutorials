@@ -32,6 +32,16 @@ Semester 1
 
 [Slide sources][sources]
 
+---
+
+Semester 2
+==========
+
+15 - [Easy as PI][t15_html] ([.pdf][t15_pdf])
+
+[Slide sources][sources]
+
+
 [t1_html]: 01-arduino-flicker-candle.html
 [t1_pdf]: 01-arduino-flicker-candle.pdf
 
@@ -58,6 +68,10 @@ Semester 1
 
 [t14_html]: 14-homework-solution.html
 [t14_pdf]: 14-homework-solution.pdf
+
+
+[t15_html]: 15-easy-as-pi.html
+[t15_pdf]: 15-easy-as-pi.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials

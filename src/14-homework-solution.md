@@ -127,16 +127,16 @@ As a little gimmick the implementation uses
 an inductive coil in the "road" to detect cars
 
 <p>
-  <video poster="images/14-traffic-demo.jpg" controls preload="none">
-    <source src="images/14-traffic-demo.mp4" type="video/mp4">
+  <video poster="images/14_traffic_demo.jpg" controls preload="none">
+    <source src="images/14_traffic_demo.mp4" type="video/mp4">
   </video>
 </p>
 
 The [source code][code_car_detect] contains a
 schematic of the circuit used
 
-[code_uart_fsm]: examples/14-uart-fsm.txt
-[code_traffic_fsm]: examples/14-traffic-fsm.ino
-[code_car_detect]: examples/14-car-detect.ino
+[code_uart_fsm]: examples/14_uart_fsm.txt
+[code_traffic_fsm]: examples/14_traffic_fsm.ino
+[code_car_detect]: examples/14_car_detect.ino
 
 [wiki_moore_machine]: https://en.wikipedia.org/wiki/Moore_machine

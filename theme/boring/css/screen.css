@@ -177,7 +177,9 @@ img, video {
 }
 
 .highlight .kt,
-.highlight .k {
+.highlight .k,
+.highlight .ow,
+.highlight .nb {
     color: RGB(53, 164, 225);
 }
 
@@ -185,4 +187,8 @@ img, video {
 .highlight .s1,
 .highlight .s2 {
     color: RGB(227, 177, 58);
+}
+
+.highlight .o {
+    color: RGB(146, 160, 167);
 }
