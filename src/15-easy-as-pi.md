@@ -84,7 +84,7 @@ notepad.exe
   </video>
 </p>
 
-Open a text editor and safe the content of
+Open a text editor and save the content of
 the next slide in a file called `count.py`
 
 Make sure that the editor does not add
