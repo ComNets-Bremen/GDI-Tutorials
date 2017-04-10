@@ -44,6 +44,7 @@ for python
     0
     1
     2
+    3
 
 Ranges start at `0` and do not include the end
 
