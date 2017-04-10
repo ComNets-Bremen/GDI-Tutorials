@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial duino_net(50, 51);
+SoftwareSerial duino_net(2, 3);
 
 int leds[]= {9, 10, 11};
 

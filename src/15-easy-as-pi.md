@@ -16,6 +16,13 @@ Calculations and loops in python
 
 ---
 
+Motivation
+==========
+
+![Motivation](images/15_motivation.png)
+
+---
+
 for python
 ==========
 
@@ -131,19 +138,14 @@ Division 10
 
 Edit `count.py` so that it outputs
 the numbers from `0.0` to `0.9` in
-steps of `0.1`
+steps of `0.1`.
 
-`0.0`
-
-`0.1`
-
-`0.2`
-
-`0.3`
-
-`0.4`
-
-`...`
+    0.0
+    0.1
+    0.2
+    0.3
+    0.4
+    …
 
 ---
 

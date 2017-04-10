@@ -147,6 +147,8 @@ img, video {
     border-radius: 0 0.3em 0 0;
     color: #d4d4d4;
     box-shadow: 0 0 0.5em black;
+
+    cursor: pointer;
 }
 
 .scrolltoggle a {
