@@ -39,6 +39,8 @@ Semester 2
 
 15 - [Easy as PI][t15_html] ([.pdf][t15_pdf])
 
+16 - [ATuino][t16_html] ([.pdf][t16_pdf])
+
 [Slide sources][sources]
 
 
@@ -72,6 +74,9 @@ Semester 2
 
 [t15_html]: 15-easy-as-pi.html
 [t15_pdf]: 15-easy-as-pi.pdf
+
+[t16_html]: 16-snekduino.html
+[t16_pdf]: 16-snekduino.pdf
 
 
 [sources]: https://github.com/hnez/GDITutorials
