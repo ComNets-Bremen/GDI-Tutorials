@@ -113,15 +113,31 @@ The class should provide a method
 `set_state` that turns the output
 on or off
 
-When you are done uncomment the commented-out lines,
+When you are done, uncomment the commented-out lines,
 to verify that your implementation
 works as expected
 
 _Hint:_ you can use the interactive commandline
 to test your implementation `python3 -i 16_atuino.py`
 
+---
+
+Complete Example
+================
+
+    !Python
+    class OutputPin(object):
+        def set_state(self, state):
+            self.arduino.exec_cmd(
+                'WRITE_HIGH' if state else 'WRITE_LOW',
+                self.pin_no
+            )
+
+[…][code_atuino_complete_py]
+
 [code_atuino_ino]: examples/16_atuino.ino
 [code_atuino_py]: examples/16_atuino.py
+[code_atuino_complete_py]: examples/16_atuino_complete.py
 
 [img_port_name]: images/16_port_name.png
 
