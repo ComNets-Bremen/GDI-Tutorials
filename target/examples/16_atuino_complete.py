@@ -78,7 +78,7 @@ class InputPin(object):
         return(state)
 
 
-duino= Arduino('/dev/ttyACM1')
+duino= Arduino('/dev/ttyACM0')
 
 key1= InputPin(duino, 10, True)
 led1= OutputPin(duino, 13)
