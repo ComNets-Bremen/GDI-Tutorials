@@ -9,8 +9,8 @@
 
 -->
 
-class Arduino:
-==============
+ATuino
+======
 
 In this tutorial we are going to remotely
 control an Arduino from a python-script
@@ -51,17 +51,18 @@ Upload the sketch from the previous slide to
 your Arduino and configure the
 [serial monitor][ref_serial_monitor]
 to send a carriage return `␍` and a newline `␊`
-character at the end of each line and to
+character at the end of each line, and to
 use a speed of `115200 Baud`
 
     AT+SET_OUT=13
     AT+WRITE_HIGH=13
 
-Enter the commands above to turn on the
-Arduino on-board LED
+Enter the commands above into the serial monitor
+to turn on the Arduino on-board LED
 
 The Arduino should
-acknowledge both commands with `OK`
+acknowledge both commands with an `OK`
+and turn on the LED
 
 ---
 
@@ -69,8 +70,9 @@ atuino.ino
 ==========
 
 Study the commands in the `at_commands` array
-and use the commands to find out if input pin `10`
-is `HIGH` or `LOW`
+
+find the commands that let you read out the
+`HIGH` or `LOW` state of pin `10`
 
 Use a piece of wire to change the state of pin `10`
 
@@ -89,25 +91,29 @@ atduino.py
 
 The code above contains class definitions
 that model the connection to an Arduino
-and input pins
+and its input pins
 
 Change `'/dev/ttyACM0'` to the name of
 your serial port, run the program and
 observe its output
+
+_Hint:_ You can use the
+[Arduino IDE][img_port_name] to find the
+name of your serial port
 
 ---
 
 class OutputPin
 ===============
 
-Write a class `OutputPin`, that models an
-output pin
+Write a class `OutputPin` that, analogous to
+the class `InputPin`, models an output pin
 
 The class should provide a method
-`.set_state` that turns the output
+`set_state` that turns the output
 on or off
 
-Uncomment the commented-out lines
+When you are done uncomment the commented-out lines,
 to verify that your implementation
 works as expected
 
@@ -116,5 +122,7 @@ to test your implementation `python3 -i 16_atuino.py`
 
 [code_atuino_ino]: examples/16_atuino.ino
 [code_atuino_py]: examples/16_atuino.py
+
+[img_port_name]: images/16_port_name.png
 
 [ref_serial_monitor]: 11-serial-io.html#slide_11
