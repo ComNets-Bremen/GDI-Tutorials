@@ -92,6 +92,9 @@ void atcb_pinread(char *param)
   Serial.print("\r\nOK\r\n");
 }
 
+/* Map AT-Command names to callback functions.
+ * The parameters in the AT-Command are passed as
+ * as a single string to the callback. */
 struct {
   char *name;
   void (*cb)(char*);
@@ -110,10 +113,15 @@ void exec_cmd()
   char buf[CMD_LEN_MAX];
   memset(buf, 0, CMD_LEN_MAX);
 
-  int c= Serial.read();
-
+  /* Read a line from the Serial port.
+   * this method does not add an '\0'
+   * end character */
   Serial.readBytesUntil('\n', buf, CMD_LEN_MAX-1);
 
+  /* Check if the command matches one in the command
+   * map. This is not done using strcmp() as
+   *  '\r' has to be ignored and
+   *  '=' separates command and argument */
   for(size_t cidx= 0; at_commands[cidx].name; cidx++) {
     for(size_t bidx= 0; ; bidx++) {
       char *a= &at_commands[cidx].name[bidx];
