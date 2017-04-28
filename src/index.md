@@ -79,4 +79,4 @@ Semester 2
 [t16_pdf]: 16-snekduino.pdf
 
 
-[sources]: https://github.com/hnez/GDITutorials
+[sources]: https://github.com/ComNets-Bremen/GDI-Tutorials

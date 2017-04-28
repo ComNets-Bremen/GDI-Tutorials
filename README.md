@@ -7,11 +7,11 @@ This repository contains slides for tutorials
 that go along with an Introduction to coputer
 science course for electrical engineering students.
 
-The course spans over two semesters,
-the two semesters center around:
+The course spans two semesters,
+the main topics of the two semesters are:
 
 - Semester 1: Using the Arduino soft- and hardware
-- Semester 2: Using python and connecting it
+- Semester 2: Programming in Python and connecting it
   to the Arduino platform
 
 The Slides are written in Markdown and the
