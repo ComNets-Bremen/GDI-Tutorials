@@ -41,6 +41,8 @@ Semester 2
 
 16 - [ATuino][t16_html] ([.pdf][t16_pdf])
 
+18 - [Numpy ❤️ Matplotlib][t18_html] ([.pdf][t18_pdf])
+
 [Slide sources][sources]
 
 
@@ -77,6 +79,9 @@ Semester 2
 
 [t16_html]: 16-snekduino.html
 [t16_pdf]: 16-snekduino.pdf
+
+[t18_html]: 18-numpy.html
+[t18_pdf]: 18-numpy.pdf
 
 
 [sources]: https://github.com/ComNets-Bremen/GDI-Tutorials
