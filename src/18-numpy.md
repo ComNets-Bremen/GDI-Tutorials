@@ -9,10 +9,11 @@
 
 -->
 
-Calc'ing and plotting
-=====================
+Numpy ❤️ Matplotlib
+==================
 
 Fast and elegant numeric calulations in python using numpy
+
 and easy plotting using matplotlib
 
 ![Taylor expansion of a cosine](images/18_taylor_expansion.svg)
@@ -91,7 +92,7 @@ and enter the import statements below:
 The statements above tell the interpreter
 that we want to use the `numpy` and `matplotlib.pyplot`
 modules and that we want to use `np` and `plt`
-as a shorthand for them
+as a shorthand for their name
 
 ---
 
@@ -102,7 +103,7 @@ numpy is centered around a similar concept as
 Matlab: everything is a vector
 
 To find out what that means we will create a
-vector for our x-axis
+vector that will be used as our x-axis
 
     !Python
     >>> x= np.linspace(-10, 10, 1024)
@@ -284,8 +285,8 @@ Solution
 <span style="color: rgb(234, 58, 58);">Red</span> track
 =======================================================
 
-The setup that generated the testdata consits of
-the an Arduino, a 433MHz OOK RF-module and a
+The setup that generated the testdata consists of
+an Arduino, a 433MHz OOK RF-module and a
 DVB-T stick that is abused to work as a software
 defined radio
 
@@ -493,8 +494,8 @@ _Numpy ❤️ Matplotlib_
 [code_ttt]: examples/18_ttt.py
 
 
-[track_green]: #slide_8
-[track_red]: #slide_3
+[track_green]: #slide_13
+[track_red]: #slide_19
 
 [wiki_taylor]: https://en.wikipedia.org/wiki/Taylor_series
 [wiki_taylor_trig]: https://en.wikipedia.org/wiki/Taylor_series#Trigonometric_functions
