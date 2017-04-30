@@ -170,7 +170,7 @@ img, video {
     padding-left: 0.2em;
 }
 
-.highlight .cp {
+.highlight .cp{
     color: RGB(58, 167, 227);
 }
 
@@ -181,7 +181,8 @@ img, video {
 .highlight .kt,
 .highlight .k,
 .highlight .ow,
-.highlight .nb {
+.highlight .nb,
+.highlight .kn {
     color: RGB(53, 164, 225);
 }
 
@@ -191,6 +192,7 @@ img, video {
     color: RGB(227, 177, 58);
 }
 
-.highlight .o {
+.highlight .o,
+.highlight .c1 {
     color: RGB(146, 160, 167);
 }
