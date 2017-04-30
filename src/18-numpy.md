@@ -19,6 +19,63 @@ and easy plotting using matplotlib
 
 ---
 
+_But first:_
+
+solutions to the last homework
+
+---
+
+Guessing game
+=============
+
+    !Python
+    if cmd == '1':
+        bound_upper= guess
+    elif cmd == '2':
+        bound_lower= guess
+    elif cmd == '3':
+        # Leave the loop
+        break
+
+[…][code_guess_game]
+
+---
+
+Fixed tic tac toe game
+======================
+
+    !Python
+    # Check rows
+    if self.field[0][0]==player and self.field[1][0]…
+        return True
+
+    if self.field[0][1]==player and self.field[1][1]…
+        return True
+
+[…][code_ttt_basic]
+
+---
+
+Optimized tic tac toe game
+==========================
+
+    !Python
+    # Check if player owns all the fields in a row
+    for col in range(3):
+        if all(
+            self.field[row][col] == player
+            for row in range(3)):
+
+            return True
+
+[…][code_ttt]
+
+---
+
+_Back to numpy & matplotlib_
+
+---
+
 Importing numpy and matplotlib
 ==============================
 
@@ -430,6 +487,11 @@ When the last frame was processed the complete message
 is printed
 
 _Numpy ❤️ Matplotlib_
+
+[code_guess_game]: examples/18_guess_game.py
+[code_ttt_basic]: examples/18_ttt_basic.py
+[code_ttt]: examples/18_ttt.py
+
 
 [track_green]: #slide_8
 [track_red]: #slide_3

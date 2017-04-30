@@ -50,8 +50,6 @@ class PlayingField(object):
         return True
 
     def check_won(self, player):
-        triplets= list()
-
         # Check if player owns all the fields in a row
         for col in range(3):
             if all(self.field[row][col] == player for row in range(3)):
