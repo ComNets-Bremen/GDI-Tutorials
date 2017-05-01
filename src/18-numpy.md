@@ -160,8 +160,9 @@ with little code
 
     !Python
     >>> y= x**2
-    >>> y_deriv= y[1:] - y[:-1]
-    >>> plt.plot(x[1:], y_deriv)
+    >>> dy= y[1:] - y[:-1]
+    >>> dx= x[1:] - x[:-1]
+    >>> plt.plot(x[1:], dy/dx)
     >>> plt.show()
 
 What is the purpose of the snippet above?
