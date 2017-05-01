@@ -30,13 +30,15 @@ Guessing game
 =============
 
     !Python
-    if cmd == '1':
-        bound_upper= guess
-    elif cmd == '2':
-        bound_lower= guess
-    elif cmd == '3':
-        # Leave the loop
-        break
+    def game_iteration(bound_lower, bound_upper):
+        …
+
+        if cmd == '1':
+            return(game_iteration(bound_lower,guess)+1)
+        elif cmd == '2':
+            return(game_iteration(guess,bound_upper)+1)
+        elif cmd == '3':
+            return(1)
 
 […][code_guess_game]
 
