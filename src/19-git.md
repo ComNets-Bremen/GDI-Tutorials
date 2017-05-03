@@ -357,8 +357,6 @@ When you are done with a feature you should
 `git add`, `git commit` and `git push` your
 changes to the server
 
----
-
 Outlook
 =======
 
@@ -376,5 +374,96 @@ But as long as you stick to the commands that were
 demonstrated in this turorial you will not lose
 progress because of accidentially overwritten/deleted
 files
+
+---
+
+CheatSheet - Commands
+=====================
+
+- `git init` - Initialize a repository in the current directory
+- `git remote add` - Tell git that you want to use a server
+- `git clone` - Clone a remote repository
+- `git status` - Run this command whenever you need advise
+- `git add` - Tell git about the newest version of a file
+- `git commit` - Create a snapshot of the current state and give it a name
+- `git pull` - Get the latest commits from a server
+- `git push` - Send the latest commits to a server
+
+---
+
+Git kaputt
+==========
+
+<pre style="font-size:0.5em">
+$ git push
+To remote
+ ! [rejected]        master -&gt; master (fetch first)
+error: failed to push some refs to '/home/leonard/lol/rimooot.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</pre>
+
+_Problem:_ `git push` gets rejected when there are changes on the server
+you do not have locally
+
+_Workaround:_ `git pull` the changes first
+
+---
+
+Git kaputt
+==========
+
+<pre style="font-size:0.5em">
+$ git pull
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From remote
+   bcdbca8..0a78d9b  master     -&gt; origin/master
+Updating bcdbca8..0a78d9b
+error: Your local changes to the following files would be overwritten by merge:
+	README.md
+Please commit your changes or stash them before you merge.
+Aborting
+</pre>
+
+_Problem:_ `git pull` complains about uncommited files
+
+_Workaround:_ `git add` and `git commit` your local
+changes and `git pull` again
+
+---
+
+Git kaputt
+==========
+
+<pre style="font-size:0.5em">
+$ git pull
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+</pre>
+
+_Problem:_ `git pull` complains because you and someone
+else edited the same file
+
+_Workaround:_ Go through every file git complains about,
+search for any occurence of `<<<<<<<` and decide which
+version you want to keep. `git add` and `git commit` the
+new version.
+
+---
+
+Git kaputt
+==========
+
+_Problem:_ Everything is broken, nothing works, my
+computer is on fire
+
+_Workaround:_ Clone the repository from the server,
+forget about your old repository and get a fire extinguisher
 
 [www_ssh_tut]: https://gitlab.com/help/ssh/README
