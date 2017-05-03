@@ -398,7 +398,7 @@ Git kaputt
 $ git push
 To remote
  ! [rejected]        master -&gt; master (fetch first)
-error: failed to push some refs to '/home/leonard/lol/rimooot.git'
+error: failed to push some refs to 'remote'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
