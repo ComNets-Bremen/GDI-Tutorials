@@ -43,6 +43,10 @@ Semester 2
 
 18 - [Numpy ❤️ Matplotlib][t18_html] ([.pdf][t18_pdf])
 
+19 - [Git][t19_html] ([.pdf][t19_pdf])
+
+21 - [Classy GUIs][t21_html] ([.pdf][t21_pdf])
+
 [Slide sources][sources]
 
 
@@ -82,6 +86,12 @@ Semester 2
 
 [t18_html]: 18-numpy.html
 [t18_pdf]: 18-numpy.pdf
+
+[t19_html]: 19-git.html
+[t19_pdf]: 19-git.pdf
+
+[t21_html]: 21-classy-guis.html
+[t21_pdf]: 21-classy-guis.pdf
 
 
 [sources]: https://github.com/ComNets-Bremen/GDI-Tutorials
