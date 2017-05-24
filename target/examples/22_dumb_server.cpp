@@ -1,0 +1,239 @@
+/* This Library commands an ESP8266 with stock AT-firmware
+ * to connect to an acces point.
+ * It then starts listening on a TCP-port and will accept
+ * exactly one connection to which it provides an Arduino-stream
+ * interface.
+ *
+ * Known caveats:
+ *  - Everything will break if you do not periodically call
+ *    available() or read(). Periodically means every few
+ *    milliseconds. Use delay() and your program will break,
+ *    you have been warned.
+ *
+ *  - It is insecure AF, this library was designed to be
+ *    simple, in writing and using.
+ *    Every single best-practice in writing secure C++
+ *    was ignored.
+ *    DO NOT USE THIS LIBRARY IN PRODUCTION SOFTWARE! */
+
+#include <Arduino.h>
+#include <Stream.h>
+
+#include "DumbServer.h"
+
+#define ESP_SUCESS_READY ((char *)"ready\r\n")
+#define ESP_SUCESS_OK ((char *)"OK\r\n")
+#define ESP_SUCESS_PKG ((char *)"+IPD,")
+#define ESP_SUCESS_IPQ ((char *)"+CIPSTA_CUR:ip:\"")
+#define ESP_SUCESS_SENT ((char *)"SEND OK\r\n")
+
+EspServer::EspServer(void)
+{
+  _esp_serial= NULL;
+  connection_id= -1;
+  rem_msg_len= 0;
+}
+
+void EspServer::begin(Stream *esp_serial, const char* ssid, const char *pass, uint16_t port)
+{
+  _esp_serial= esp_serial;
+  _esp_serial->setTimeout(60000);
+
+  reset();
+  connect_wifi(ssid, pass);
+  setup_server(port);
+}
+
+void EspServer::flush_in_buff()
+{
+  while(_esp_serial->available()) {
+    _esp_serial->read();
+  }
+}
+void EspServer::reset()
+{
+  flush_in_buff();
+
+  // Reset ESP
+  _esp_serial->println("AT+RST");
+  _esp_serial->find(ESP_SUCESS_READY);
+
+  delay(500);
+
+  // Disable command echo
+  _esp_serial->println("ATE0");
+  _esp_serial->find(ESP_SUCESS_OK);
+}
+
+void EspServer::connect_wifi(const char *ssid, const char* pwd)
+{
+  // Set station mode
+  _esp_serial->println("AT+CWMODE_CUR=1");
+  _esp_serial->find(ESP_SUCESS_OK);
+
+  // Connect to AP
+  _esp_serial->print("AT+CWJAP_CUR=\"");
+  _esp_serial->print(ssid);
+  _esp_serial->print("\",\"");
+  _esp_serial->print(pwd);
+  _esp_serial->println("\"");
+  _esp_serial->find(ESP_SUCESS_OK);
+
+  // Get an IP using DHCP
+  _esp_serial->println("AT+CIFSR");
+  _esp_serial->find(ESP_SUCESS_OK);
+}
+
+void EspServer::setup_server(uint16_t port)
+{
+  /* Configure for multiple connections
+   * (necessary to run as server) */
+  _esp_serial->println("AT+CIPMUX=1");
+  _esp_serial->find(ESP_SUCESS_OK);
+
+  // Start listening for connections
+  _esp_serial->print("AT+CIPSERVER=1,");
+  _esp_serial->println(port);
+  _esp_serial->find(ESP_SUCESS_OK);
+}
+
+void EspServer::my_ip(char *buf)
+{
+  _esp_serial->println("AT+CIPSTA_CUR?");
+  _esp_serial->find(ESP_SUCESS_IPQ);
+
+  for(size_t idx=0; ; idx++) {
+    while(!_esp_serial->available());
+    char inb= _esp_serial->read();
+
+    if (inb == '"') {
+      break;
+    }
+
+    buf[idx]= inb;
+    buf[idx+1]= 0;
+  }
+
+  _esp_serial->find(ESP_SUCESS_OK);
+}
+
+int EspServer::available()
+{
+  int ser_available= _esp_serial->available();
+
+  if(rem_msg_len) {
+    // There is a message in transit
+
+    return(min(rem_msg_len, ser_available));
+  }
+
+  if(ser_available) {
+    char bte= _esp_serial->peek();
+
+    /* CONNECT/DISCONNECT messages
+     * start with a number */
+    if(bte >= '0' && bte <= '9') {
+      /* Read the connection ID and skip
+       * to the first part of the command */
+      int id= _esp_serial->parseInt();
+      _esp_serial->find((char *)",C");
+
+      /* Read the character that lets us determine
+       * if a connection was opened or closed */
+      char cmd= _esp_serial->read();
+
+      if(cmd == 'O') {
+        // Command is ?,CONNECT
+
+        if(connection_id >= 0) {
+          /* Only allow one open connection,
+           * close the new one */
+
+          _esp_serial->print("AT+CIPCLOSE=");
+          _esp_serial->println(id);
+        }
+        else {
+          connection_id= id;
+        }
+      }
+
+      if(cmd == 'L') {
+        // Command is ?,CLOSED
+
+        if(id == connection_id) {
+          connection_id= -1;
+        }
+      }
+
+      _esp_serial->find((char *)"\r\n");
+    }
+
+    bte= _esp_serial->peek();
+
+    if(bte == '+') {
+      char cmd[4];
+      _esp_serial->readBytes(cmd, 4);
+
+      int id= _esp_serial->parseInt();
+      int len= _esp_serial->parseInt();
+
+      _esp_serial->find((char *)":");
+
+      if(id == connection_id) {
+        rem_msg_len= len;
+      }
+    }
+    else {
+      _esp_serial->read();
+    }
+  }
+
+
+  return(0);
+}
+
+int EspServer::peek()
+{
+  if(available()) {
+    return(_esp_serial->peek());
+  }
+  else {
+    return(-1);
+  }
+}
+
+int EspServer::read()
+{
+  if(available()) {
+    rem_msg_len -= 1;
+
+    return(_esp_serial->read());
+  }
+  else {
+    return(-1);
+  }
+}
+
+void EspServer::flush()
+{
+  _esp_serial->flush();
+}
+
+size_t EspServer::write(const uint8_t *buffer, size_t size)
+{
+  while(connection_id < 0) {
+    available();
+  }
+
+  _esp_serial->print("AT+CIPSEND=");
+  _esp_serial->print(connection_id);
+  _esp_serial->print(",");
+  _esp_serial->println(size);
+
+  _esp_serial->find((char *)">");
+
+  _esp_serial->write(buffer, size);
+  _esp_serial->find((char *)ESP_SUCESS_SENT);
+
+  return(size);
+}
