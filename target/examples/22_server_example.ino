@@ -16,7 +16,7 @@ void setup()
   char ip[16];
   esp_server.my_ip(ip);
 
-  Serial.print("My ip: ")
+  Serial.print("My ip: ");
   Serial.println(ip);
 }
 
