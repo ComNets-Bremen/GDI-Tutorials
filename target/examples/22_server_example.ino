@@ -24,7 +24,7 @@ void setup()
    * Arduino with the "Bare Minimum" example,
    * connect the GNDs of the two Arduinos,
    * connect pin 3 or 2 of the Arduino with the Wifi-shield
-   * to pin 0 of the other Arduino and use the Serial monitor
+   * to pin 1(TX) of the other Arduino and use the Serial monitor
    * to see the Wifi commands and error-messages. */
   Serial.println("Staring server...");
   esp_server.begin(&esp_serial, "GDI", "password", 30303);
