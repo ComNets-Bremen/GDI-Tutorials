@@ -20,7 +20,8 @@ public:
   EspServer(void);
 
   void begin(Stream *esp_serial, const char* ssid, const char *pass, uint16_t port);
-  void my_ip(char *buf);
+  void my_ip(char *buf, size_t buflen);
+  bool connected();
 
   virtual int available();
   virtual int peek();

@@ -97,24 +97,26 @@ void EspServer::setup_server(uint16_t port)
   _esp_serial->find(ESP_SUCESS_OK);
 }
 
-void EspServer::my_ip(char *buf)
+void EspServer::my_ip(char *buf, size_t buflen)
 {
   _esp_serial->println("AT+CIPSTA_CUR?");
   _esp_serial->find(ESP_SUCESS_IPQ);
 
-  for(size_t idx=0; ; idx++) {
-    while(!_esp_serial->available());
-    char inb= _esp_serial->read();
-
-    if (inb == '"') {
-      break;
-    }
-
-    buf[idx]= inb;
-    buf[idx+1]= 0;
-  }
+  memset(buf, 0, buflen);
+  _esp_serial->readBytesUntil('"', buf, buflen - 1);
 
   _esp_serial->find(ESP_SUCESS_OK);
+}
+
+bool EspServer::connected()
+{
+  /* available() will, as a side-effect check if
+   * the connection status changed */
+  available();
+
+  /* Return true if there is currently a
+   * client connected */
+  return(connection_id >= 0);
 }
 
 int EspServer::available()
@@ -221,9 +223,7 @@ void EspServer::flush()
 
 size_t EspServer::write(const uint8_t *buffer, size_t size)
 {
-  while(connection_id < 0) {
-    available();
-  }
+  while(!connected());
 
   _esp_serial->print("AT+CIPSEND=");
   _esp_serial->print(connection_id);
