@@ -9,6 +9,9 @@
 SoftwareSerial esp_serial(3, 2);
 EspServer esp_server;
 
+bool last_button= false;
+bool last_connected= false;
+
 void setup()
 {
   Serial.begin(9600);
@@ -38,6 +41,9 @@ void setup()
 
   Serial.print("My ip: ");
   Serial.println(ip);
+
+  pinMode(13, OUTPUT);
+  pinMode(12, INPUT_PULLUP);
 }
 
 void loop()
@@ -47,8 +53,16 @@ void loop()
     // Read one line of commands
     String command= esp_server.readStringUntil('\n');
 
-    // Echo back the command as-is
-    esp_server.print(">");
-    esp_server.println(command);
+    digitalWrite(13, (command == "on") ? HIGH : LOW);
   }
+
+  bool cur_button= digitalRead(12);
+  bool cur_connected= esp_server.connected();
+
+  if(cur_connected && (cur_button != last_button || !last_connected)) {
+    esp_server.println(cur_button ? "high" : "low");
+  }
+
+  last_button= cur_button;
+  last_connected= cur_connected;
 }
