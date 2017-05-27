@@ -47,6 +47,8 @@ Semester 2
 
 21 - [Classy GUIs][t21_html] ([.pdf][t21_pdf])
 
+22 - [WiFi][t22_html] ([.pdf][t22_pdf])
+
 [Slide sources][sources]
 
 
@@ -93,5 +95,7 @@ Semester 2
 [t21_html]: 21-classy-guis.html
 [t21_pdf]: 21-classy-guis.pdf
 
+[t22_html]: 22-wifi.html
+[t22_pdf]: 22-wifi.pdf
 
 [sources]: https://github.com/ComNets-Bremen/GDI-Tutorials

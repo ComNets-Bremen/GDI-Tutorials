@@ -212,7 +212,7 @@ sockets & GUIs
     Hostname: 192.168.42.123
     Port: 30303
 
-Run the [GUI][code_lc_py] and provide
+Run the [GUI code][code_lc_py] and provide
 it with the correct IP-address
 
 
