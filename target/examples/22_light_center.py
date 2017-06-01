@@ -2,31 +2,49 @@
 
 import tkinter as tk
 import socket as so
+import queue
+import threading
 
 class Arduino(object):
     def __init__(self, window, host, port, on_received):
+        self.window= window
+        self.on_received= on_received
+
         # Open socket and connect to the Arduino
         self.socket= so.socket()
         self.socket.connect((host, port))
-        self.socket.setblocking(False)
 
-        self.on_received= on_received
+        self.queue= queue.Queue()
+        self.run= True
 
-        self.rd_buff= bytes()
+        self.thread= threading.Thread(
+            None, self.socket_thread
+        )
 
-        # Call on_readable whenever the Arduino sends a message
-        window.createfilehandler(self.socket, tk.READABLE, self.on_readable)
+        self.thread.start()
+
+        self.periodic_queue_check()
 
     def send_command(self, command):
         self.socket.send(command.encode('utf-8') + b'\n')
 
-    def on_readable(self, sock, mask):
-        self.rd_buff+= self.socket.recv(1024)
+    def socket_thread(self):
+        rd_buff= bytes()
 
-        while b'\n' in self.rd_buff:
-            line, self.rd_buff= self.rd_buff.split(b'\n', 1)
+        while self.run:
+            rd_buff+= self.socket.recv(1)
 
-            self.on_received(line.decode('utf-8').strip())
+            if b'\n' in rd_buff:
+                self.queue.put(rd_buff.decode('utf-8').strip())
+                rd_buff= bytes()
+
+    def periodic_queue_check(self):
+        if not self.queue.empty():
+            elem= self.queue.get()
+
+            self.on_received(elem)
+
+        self.window.after(100, self.periodic_queue_check)
 
 class LedButton(object):
     '''A button that controls one LED connected to an Arduino
