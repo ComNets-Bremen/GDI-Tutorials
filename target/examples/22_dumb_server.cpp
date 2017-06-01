@@ -50,26 +50,45 @@ void EspServer::flush_in_buff()
     _esp_serial->read();
   }
 }
+
+char EspServer::blockread()
+{
+  while(!_esp_serial->available());
+
+  return(_esp_serial->read());
+}
+
+void EspServer::expect(char *msg)
+{
+  char *exp= msg;
+
+  while(*exp) {
+    if (blockread() != *exp) {
+      exp= msg;
+    }
+    else {
+      exp++;
+    }
+  }
+}
+
 void EspServer::reset()
 {
-  flush_in_buff();
-
-  // Reset ESP
   _esp_serial->println("AT+RST");
-  _esp_serial->find(ESP_SUCESS_READY);
+  expect(ESP_SUCESS_READY);
 
-  delay(500);
+  flush_in_buff();
 
   // Disable command echo
   _esp_serial->println("ATE0");
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 }
 
 void EspServer::connect_wifi(const char *ssid, const char* pwd)
 {
   // Set station mode
   _esp_serial->println("AT+CWMODE_CUR=1");
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 
   // Connect to AP
   _esp_serial->print("AT+CWJAP_CUR=\"");
@@ -77,11 +96,11 @@ void EspServer::connect_wifi(const char *ssid, const char* pwd)
   _esp_serial->print("\",\"");
   _esp_serial->print(pwd);
   _esp_serial->println("\"");
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 
   // Get an IP using DHCP
   _esp_serial->println("AT+CIFSR");
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 }
 
 void EspServer::setup_server(uint16_t port)
@@ -89,23 +108,23 @@ void EspServer::setup_server(uint16_t port)
   /* Configure for multiple connections
    * (necessary to run as server) */
   _esp_serial->println("AT+CIPMUX=1");
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 
   // Start listening for connections
   _esp_serial->print("AT+CIPSERVER=1,");
   _esp_serial->println(port);
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 }
 
 void EspServer::my_ip(char *buf, size_t buflen)
 {
   _esp_serial->println("AT+CIPSTA_CUR?");
-  _esp_serial->find(ESP_SUCESS_IPQ);
+  expect(ESP_SUCESS_IPQ);
 
   memset(buf, 0, buflen);
   _esp_serial->readBytesUntil('"', buf, buflen - 1);
 
-  _esp_serial->find(ESP_SUCESS_OK);
+  expect(ESP_SUCESS_OK);
 }
 
 bool EspServer::connected()
@@ -138,11 +157,12 @@ int EspServer::available()
       /* Read the connection ID and skip
        * to the first part of the command */
       int id= _esp_serial->parseInt();
-      _esp_serial->find((char *)",C");
+
+      expect((char *)",C");
 
       /* Read the character that lets us determine
        * if a connection was opened or closed */
-      char cmd= _esp_serial->read();
+      char cmd= blockread();
 
       if(cmd == 'O') {
         // Command is ?,CONNECT
@@ -167,19 +187,16 @@ int EspServer::available()
         }
       }
 
-      _esp_serial->find((char *)"\r\n");
+      expect((char *)"\r\n");
     }
-
-    bte= _esp_serial->peek();
-
-    if(bte == '+') {
-      char cmd[4];
+    else if(bte == '+') {
+      char cmd[5]= {0};
       _esp_serial->readBytes(cmd, 4);
 
       int id= _esp_serial->parseInt();
       int len= _esp_serial->parseInt();
 
-      _esp_serial->find((char *)":");
+      expect((char *)":");
 
       if(id == connection_id) {
         rem_msg_len= len;
@@ -230,10 +247,10 @@ size_t EspServer::write(const uint8_t *buffer, size_t size)
   _esp_serial->print(",");
   _esp_serial->println(size);
 
-  _esp_serial->find((char *)">");
+  expect((char *)">");
 
   _esp_serial->write(buffer, size);
-  _esp_serial->find((char *)ESP_SUCESS_SENT);
+  expect((char *)ESP_SUCESS_SENT);
 
   return(size);
 }
