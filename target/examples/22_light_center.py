@@ -30,6 +30,12 @@ class Arduino(object):
 
         self.socket.send(command.encode('utf-8') + b'\n')
 
+    def close(self):
+        'Cleanly close the connection'
+
+        self.socket.close()
+        self.window.after_cancel(self.after_event)
+
     def _periodic_socket_check(self):
         try:
             msg= self.socket.recv(1024)
@@ -51,10 +57,13 @@ class Arduino(object):
             line, self.rd_buff= self.rd_buff.split(b'\n')
 
             line= line.decode('utf-8').strip()
-
             self.on_received(line)
 
-        self.window.after(100, self._periodic_socket_check)
+        # Tell tkinter to call this function again
+        # in 100ms
+        self.after_event= self.window.after(
+            100, self._periodic_socket_check
+        )
 
 class LedButton(object):
     '''A button that controls one LED connected to an Arduino
@@ -111,6 +120,11 @@ class LightCenterWindow(object):
     def setup_window(self):
         self.window= tk.Tk()
         self.window.title('Light Center')
+        self.window.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def on_close(self):
+        self.arduino.close()
+        self.window.destroy()
 
     def setup_content(self):
         self.btn_label_var= tk.StringVar(self.window)

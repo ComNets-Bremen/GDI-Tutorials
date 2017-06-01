@@ -12,8 +12,7 @@ private:
 
   void flush_in_buff();
   void reset();
-  char EspServer::blockread();
-  void expect_message(const char *msg);
+  char blockread();
   void connect_wifi(const char *ssid, const char* pwd);
   void setup_server(uint16_t port);
   void expect(char *msg);
