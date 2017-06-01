@@ -2,49 +2,59 @@
 
 import tkinter as tk
 import socket as so
-import queue
-import threading
 
 class Arduino(object):
     def __init__(self, window, host, port, on_received):
+        '''An abstraction for a network-connected Arduino.
+
+        'window' is an instance of a TK root object,
+        'host' and 'port' are the TCP network address of an Arduino,
+        'on_received' is a function that is called whenever a line is
+        received from the Arduino.
+        '''
+
         self.window= window
         self.on_received= on_received
 
         # Open socket and connect to the Arduino
         self.socket= so.socket()
         self.socket.connect((host, port))
+        self.socket.setblocking(False)
 
-        self.queue= queue.Queue()
-        self.run= True
+        self.rd_buff= bytes()
 
-        self.thread= threading.Thread(
-            None, self.socket_thread
-        )
-
-        self.thread.start()
-
-        self.periodic_queue_check()
+        self._periodic_socket_check()
 
     def send_command(self, command):
+        'Send a message to the Arduino'
+
         self.socket.send(command.encode('utf-8') + b'\n')
 
-    def socket_thread(self):
-        rd_buff= bytes()
+    def _periodic_socket_check(self):
+        try:
+            msg= self.socket.recv(1024)
 
-        while self.run:
-            rd_buff+= self.socket.recv(1)
+            if not msg:
+                raise(IOError('Connection closed'))
 
-            if b'\n' in rd_buff:
-                self.queue.put(rd_buff.decode('utf-8').strip())
-                rd_buff= bytes()
+            self.rd_buff+= msg
 
-    def periodic_queue_check(self):
-        if not self.queue.empty():
-            elem= self.queue.get()
+        except so.error:
+            # In non-blocking mode an exception is thrown
+            # whenever no data is available.
+            # Which error is OS-dependant so we have to catch
+            # the generic socket.error exception.
 
-            self.on_received(elem)
+            pass
 
-        self.window.after(100, self.periodic_queue_check)
+        while b'\n' in self.rd_buff:
+            line, self.rd_buff= self.rd_buff.split(b'\n')
+
+            line= line.decode('utf-8').strip()
+
+            self.on_received(line)
+
+        self.window.after(100, self._periodic_socket_check)
 
 class LedButton(object):
     '''A button that controls one LED connected to an Arduino
