@@ -49,7 +49,7 @@ void setup()
 void loop()
 {
   // Check if the python program sent commands
-  if(esp_server.available()) {
+  while(esp_server.available()) {
     // Read one line of commands
     String command= esp_server.readStringUntil('\n');
 

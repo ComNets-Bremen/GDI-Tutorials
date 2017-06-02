@@ -186,7 +186,7 @@ sockets & GUIs
 ==============
 
     !C
-    if(esp_server.available()) {
+    while(esp_server.available()) {
         String command= esp_server.readStringUntil('\n');
         digitalWrite(13, (command == "on") ? HIGH : LOW);
     }
