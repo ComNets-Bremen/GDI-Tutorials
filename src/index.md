@@ -49,6 +49,8 @@ Semester 2
 
 22 - [WiFi][t22_html] ([.pdf][t22_pdf])
 
+25 - [Iterating][t25_html] ([.pdf][t25_pdf])
+
 [Slide sources][sources]
 
 
@@ -97,5 +99,9 @@ Semester 2
 
 [t22_html]: 22-wifi.html
 [t22_pdf]: 22-wifi.pdf
+
+[t25_html]: 25-iterating.html
+[t25_pdf]: 25-iterating.pdf
+
 
 [sources]: https://github.com/ComNets-Bremen/GDI-Tutorials

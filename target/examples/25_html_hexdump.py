@@ -38,16 +38,16 @@ def read_binary(name):
         return(fd.read())
 
 def hexdump_html(binary):
-    def to_chunks(src):
+    def to_chunks(src, chunk_size):
         idx= 0
         end= len(src)
 
         while idx<end:
-            yield(idx, src[idx:idx+16])
+            yield(idx, src[idx:idx+chunk_size])
 
-            idx+= 16
+            idx+= chunk_size
 
-    for (index, chunk) in to_chunks(binary):
+    for (index, chunk) in to_chunks(binary, 16):
         as_hex= ' '.join(
             '<span style="color: hsl({}, 100%, 60%)">{:02x}</span>'.format(
                 int(byte/255*330), byte
