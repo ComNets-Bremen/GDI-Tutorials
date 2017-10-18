@@ -16,3 +16,6 @@ all: $(HTML_FILES) $(PDF_FILES)
 
 %.pdf: %.html
 	$(PDF_COMPILER) --keep-relative-links $(<) $(@)
+
+available: all
+	rsync -av . tut@zerforscht.de:public_html/gdi

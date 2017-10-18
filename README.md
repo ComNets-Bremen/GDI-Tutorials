@@ -29,6 +29,13 @@ and run make.
 
     $ make
 
+Assuming you have the access rights to the server configured
+in the Makefile you can now run
+
+    $ make available
+
+to upload the slides to a server.
+
 Dependencies
 ============
 
